@@ -1,18 +1,47 @@
 class Aleksey{
 
-    field int positionTorso;
-    field int positionHead;
-    field int positionLeftHand;
-    field int positionRightHand;
+    field int rotation;
 
-    constructor Aleksey new(int locationTorso, int locationHead, 
-                            int locationLeftHand, int locationRightHand){
-        let positionTorso = locationTorso;
-        let positionHead = locationHead;
-        let positionLeftHand = locationLeftHand;
-        let positionRightHand = locationRightHand;
-
+    constructor Aleksey new() {
+        let rotation = 0;
         return this;
+    }
+
+    method void rotate()
+    {
+        // Still
+        if (rotation = 0) {
+            do GameSprites.drawAlekseyHandStillLeft(4974);
+            do GameSprites.drawAlekseyHandStillRight(4977);
+        }
+
+        // Up-Left
+        if (rotation = 1) {
+            do GameSprites.drawAlekseyHeadLeft(3823);
+            do GameSprites.drawAlekseyHandUpLeft(4620);
+            do GameSprites.drawAlekseyHandStillRight(4977);
+        }
+
+        // Up-Right
+        if (rotation = 2) {
+            do GameSprites.drawAlekseyHeadRight(3823);
+            do GameSprites.drawAlekseyHandStillLeft(4974);
+            do GameSprites.drawAlekseyHandUpRight(4625);
+        }
+
+        // Bottom-Left
+        if (rotation = 3) {
+            do GameSprites.drawAlekseyHeadLeft(3823);
+            do GameSprites.drawAlekseyHandBottomLeft(4973);
+            do GameSprites.drawAlekseyHandStillRight(4977);
+        }
+
+        // Bottom-Right
+        if (rotation = 4) {
+            do GameSprites.drawAlekseyHeadRight(3823);
+            do GameSprites.drawAlekseyHandStillLeft(4974);
+            do GameSprites.drawAlekseyHandBottomRight(4977);
+        }
     }
     
     method void dispose(){

@@ -1,6 +1,7 @@
 class Main {
-    function void main(){
+    function void main() {
         var GameField gameField;
+        do gameField.initialize();
         do gameField.run();
         return;
     }
