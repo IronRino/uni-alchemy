@@ -8,8 +8,6 @@ class GameField {
 
         let key = 0;
         let exit = false;
-
-
         let aleksey = Aleksey.new();
 
         while (~exit) {
@@ -19,13 +17,15 @@ class GameField {
                 do aleksey.rotate();
             }
 
-            if (key = 140) { let exit = true; } // Escape
-            if (key = 87) { do aleksey.setRotation(1); } // W
-            if (key = 76) { do aleksey.setRotation(2); } // L
-            if (key = 83) { do aleksey.setRotation(3); } // S
-            if (key = 80) { do aleksey.setRotation(4); } // P
-
-            do aleksey.rotate();
+            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80)) {
+                let key = Keyboard.keyPressed();
+                if (key = 140) { let exit = true; } // Escape
+                if (key = 87) { do aleksey.setRotation(1); } // W
+                if (key = 76) { do aleksey.setRotation(2); } // L
+                if (key = 83) { do aleksey.setRotation(3); } // S
+                if (key = 80) { do aleksey.setRotation(4); } // P
+                do aleksey.rotate();
+            }
         }
 
         return;
