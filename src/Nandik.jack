@@ -4,30 +4,7 @@ class Nandik{
 
     constructor Nandik new(int location){
         let position = location;
-        do drawNandik(position);
         return this;
-    }
-
-    method void drawNandik(int location) {
-        var int memAddress; 
-        let memAddress = 16384+location;
-        do Memory.poke(memAddress, 1020);
-        do Memory.poke(memAddress +32, 2044);
-        do Memory.poke(memAddress +64, 3596);
-        do Memory.poke(memAddress +96, 7183);
-        do Memory.poke(memAddress +128, 14351);
-        do Memory.poke(memAddress +160, 12300);
-        do Memory.poke(memAddress +192, 13356);
-        do Memory.poke(memAddress +224, -4084);
-        do Memory.poke(memAddress +256, -3508);
-        do Memory.poke(memAddress +288, 12684);
-        do Memory.poke(memAddress +320, 12300);
-        do Memory.poke(memAddress +352, 14351);
-        do Memory.poke(memAddress +384, 7183);
-        do Memory.poke(memAddress +416, 3596);
-        do Memory.poke(memAddress +448, 2044);
-        do Memory.poke(memAddress +480, 1020);
-        return;
     }
 
     method void dispose(){
