@@ -4,9 +4,11 @@ class GameField {
 
         var char key;
         var boolean exit;
-        var Aleksey aleksey;
+        var Aleksey aleksey; 
+        var char previousKey;
 
         let key = 0;
+        let previousKey = 0;
         let exit = false;
         let aleksey = Aleksey.new();
 
@@ -15,17 +17,19 @@ class GameField {
                 let key = Keyboard.keyPressed();
                 do aleksey.setRotation(0);
                 do aleksey.rotate();
+                let previousKey = key;
             }
 
-            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80)) {
+            do aleksey.clearHands();
+
+            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80) & (previousKey = key)) {
                 let key = Keyboard.keyPressed();
                 if (key = 140) { let exit = true; } // Escape
                 if (key = 87) { do aleksey.setRotation(1); } // W
                 if (key = 80) { do aleksey.setRotation(2); } // P
                 if (key = 83) { do aleksey.setRotation(3); } // S
                 if (key = 76) { do aleksey.setRotation(4); } // L
-
-                do aleksey.clearHands();
+                let previousKey = key;
                 do aleksey.rotate();
             }
         }
