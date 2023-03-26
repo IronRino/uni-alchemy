@@ -1,0 +1,110 @@
+function Aleksey.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 0
+push pointer 0
+return
+function Aleksey.getRotation 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Aleksey.setRotation 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 0
+push constant 0
+return
+function Aleksey.rotate 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 4974
+call GameSprites.drawAlekseyHandStillLeft 1
+pop temp 0
+push constant 4977
+call GameSprites.drawAlekseyHandStillRight 1
+pop temp 0
+label IF_FALSE0
+push this 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 3823
+call GameSprites.drawAlekseyHeadLeft 1
+pop temp 0
+push constant 4620
+call GameSprites.drawAlekseyHandUpLeft 1
+pop temp 0
+push constant 4977
+call GameSprites.drawAlekseyHandStillRight 1
+pop temp 0
+label IF_FALSE1
+push this 0
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 3823
+call GameSprites.drawAlekseyHeadRight 1
+pop temp 0
+push constant 4974
+call GameSprites.drawAlekseyHandStillLeft 1
+pop temp 0
+push constant 4625
+call GameSprites.drawAlekseyHandUpRight 1
+pop temp 0
+label IF_FALSE2
+push this 0
+push constant 3
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 3823
+call GameSprites.drawAlekseyHeadLeft 1
+pop temp 0
+push constant 4973
+call GameSprites.drawAlekseyHandBottomLeft 1
+pop temp 0
+push constant 4977
+call GameSprites.drawAlekseyHandStillRight 1
+pop temp 0
+label IF_FALSE3
+push this 0
+push constant 4
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 3823
+call GameSprites.drawAlekseyHeadRight 1
+pop temp 0
+push constant 4974
+call GameSprites.drawAlekseyHandStillLeft 1
+pop temp 0
+push constant 4977
+call GameSprites.drawAlekseyHandBottomRight 1
+pop temp 0
+label IF_FALSE4
+push constant 0
+return
+function Aleksey.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

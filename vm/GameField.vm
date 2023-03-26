@@ -1,0 +1,132 @@
+function GameField.run 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+call Aleksey.new 0
+pop local 2
+label WHILE_EXP0
+push local 1
+not
+not
+if-goto WHILE_END0
+label WHILE_EXP1
+push local 0
+push constant 140
+eq
+push local 0
+push constant 87
+eq
+or
+push local 0
+push constant 76
+eq
+or
+push local 0
+push constant 83
+eq
+or
+push local 0
+push constant 80
+eq
+or
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 0
+push local 2
+push constant 0
+call Aleksey.setRotation 2
+pop temp 0
+push local 2
+call Aleksey.rotate 1
+pop temp 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 140
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 1
+label IF_FALSE0
+push local 0
+push constant 87
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 2
+push constant 1
+call Aleksey.setRotation 2
+pop temp 0
+label IF_FALSE1
+push local 0
+push constant 76
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 2
+push constant 2
+call Aleksey.setRotation 2
+pop temp 0
+label IF_FALSE2
+push local 0
+push constant 83
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 2
+push constant 3
+call Aleksey.setRotation 2
+pop temp 0
+label IF_FALSE3
+push local 0
+push constant 80
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 2
+push constant 4
+call Aleksey.setRotation 2
+pop temp 0
+label IF_FALSE4
+push local 2
+call Aleksey.rotate 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function GameField.initialize 0
+push argument 0
+pop pointer 0
+push constant 4869
+call GameSprites.drawRoad 1
+pop temp 0
+push constant 4884
+call GameSprites.drawRoad 1
+pop temp 0
+push constant 6150
+call GameSprites.drawRoad 1
+pop temp 0
+push constant 6163
+call GameSprites.drawRoad 1
+pop temp 0
+push constant 7178
+call GameSprites.drawBoxPlatform 1
+pop temp 0
+push constant 4879
+call GameSprites.drawAlekseyTorso 1
+pop temp 0
+push constant 0
+return

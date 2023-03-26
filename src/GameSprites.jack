@@ -674,7 +674,7 @@ class GameSprites{
         let i = 0;
         while (~(i = 7))
         {
-            do drawRoadSegment(location+i);
+            do GameSprites.drawRoadSegment(location+i);
             let i = i + 1;
         }
         return;
@@ -696,27 +696,26 @@ class GameSprites{
 
 
     // Box sprites
-    function void drawBoxPlatform(){
-        var int i, j, location;
+    function void drawBoxPlatform(int location){
+        var int i;
         let i = 0; 
-        let location = position;
         while (~(i = 12))
         {
-            do drawBox0(location+i);
-            do drawBox1(location+i+1);
-            do drawBox2(location+i+2);
-            do drawBox3(location+i+3);
+            do GameSprites.drawBox0(location+i);
+            do GameSprites.drawBox1(location+i+1);
+            do GameSprites.drawBox2(location+i+2);
+            do GameSprites.drawBox3(location+i+3);
             let i = i + 4;
         }
 
         let i = 0;
-        let location = position + 512;
+        let location = location + 512;
         while (~(i = 12))
         {
-            do drawBox3(location+i);
-            do drawBox2(location+i+1);
-            do drawBox1(location+i+2);
-            do drawBox0(location+i+3);
+            do GameSprites.drawBox3(location+i);
+            do GameSprites.drawBox2(location+i+1);
+            do GameSprites.drawBox1(location+i+2);
+            do GameSprites.drawBox0(location+i+3);
             let i = i + 4;
         } 
         return;
