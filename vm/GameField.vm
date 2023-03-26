@@ -178,7 +178,7 @@ call Nandik.tryMove 2
 pop temp 0
 push local 4
 push constant 1
-sub
+add
 pop local 4
 goto WHILE_EXP1
 label WHILE_END1

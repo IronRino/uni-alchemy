@@ -67,7 +67,7 @@ class GameField {
             while (i < objectCount) {
                 let nandik = objects[i];
                 do nandik.tryMove(aleksey); 
-                let i = i - 1;
+                let i = i + 1;
             }
 
             do aleksey.rotate();
