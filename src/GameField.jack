@@ -1,22 +1,17 @@
 class GameField {
     function void run(){
-        var Aleksey aleksey;
-        var Boxes boxes;
-        var Road upLeftRoad, upRightRoad, downLeftRoad, downRightRoad;
+        do GameSprites.drawRoad(4869);
+        do GameSprites.drawRoad(4884);
+        do GameSprites.drawRoad(6150);
+        do GameSprites.drawRoad(6163);
 
-        let upLeftRoad = Road.new(4869);
-        let upRightRoad = Road.new(4884);
-        let downLeftRoad = Road.new(6150);
-        let downRightRoad = Road.new(6163);
-        let aleksey = Aleksey.new(4879, 3823, 4974, 4977);
-        let boxes = Boxes.new(7178);
+        do GameSprites.drawAlekseyTorso(4879);
+        do GameSprites.drawAlekseyHeadRight(3823);
+        do GameSprites.drawAlekseyHandStillLeft(4974);
+        do GameSprites.drawAlekseyHandStillRight(4977);
 
-        do upLeftRoad.dispose();
-        do upRightRoad.dispose();
-        do downLeftRoad.dispose();
-        do downRightRoad.dispose();
-        do boxes.dispose();
-        do aleksey.dispose();
+        do GameSprites.drawBoxPlatform(7178);
+
         return;
     }
 }

@@ -1,0 +1,28 @@
+class RandomGenerator 
+{
+    field int random1, random2, maxValue, factor;
+    
+    constructor Random new(button) {
+        let random1 = 29382;
+        let random2 = 2984;
+        let maxValue = 32767;
+        let factor = button;
+        return this;
+    }
+
+    method int next(int a, int b) {
+        var int remainder;
+        let remainder = a - ((a / b) * b);
+        if (remainder < 0){
+            let remainder = remainder * -1;
+        }
+        return remainder;
+    }
+
+    method int random() {
+        var int rand;
+        let rand = Random.next(random1 * factor + random2, maxValue);
+        let factor = rand;
+        return Random.next(rand, 4);
+    }
+}
