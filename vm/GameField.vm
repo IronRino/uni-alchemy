@@ -46,6 +46,30 @@ call Aleksey.rotate 1
 pop temp 0
 goto WHILE_EXP1
 label WHILE_END1
+label WHILE_EXP2
+push local 0
+push constant 140
+eq
+push local 0
+push constant 87
+eq
+or
+push local 0
+push constant 76
+eq
+or
+push local 0
+push constant 83
+eq
+or
+push local 0
+push constant 80
+eq
+or
+not
+if-goto WHILE_END2
+call Keyboard.keyPressed 0
+pop local 0
 push local 0
 push constant 140
 eq
@@ -103,6 +127,8 @@ label IF_FALSE4
 push local 2
 call Aleksey.rotate 1
 pop temp 0
+goto WHILE_EXP2
+label WHILE_END2
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
