@@ -1,9 +1,10 @@
 class Amogus{
 
-    field int location;
+    field int position;
 
-    constructor Amogus new(){
-        do drawAmogus();
+    constructor Amogus new(int location){
+        let position = location;
+        do drawAmogus(position);
         return this;
     }
 

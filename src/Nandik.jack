@@ -1,9 +1,10 @@
 class Nandik{
 
-    field int location;
+    field int position;
 
-    constructor Nandik new(){
-        do drawNandik();
+    constructor Nandik new(int location){
+        let position = location;
+        do drawNandik(position);
         return this;
     }
 

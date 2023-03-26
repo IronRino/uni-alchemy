@@ -1,0 +1,29 @@
+class Road{
+
+    field int position;
+
+    constructor Road new(int location){
+        let position = location;
+        do drawRoad(position);
+        return this;
+    }
+
+    method void drawRoad(int location) {
+        var int memAddress; 
+        let memAddress = 16384+location;
+        do Memory.poke(memAddress +32, -1);
+        do Memory.poke(memAddress +64, -1);
+        do Memory.poke(memAddress +96, -13108);
+        do Memory.poke(memAddress +128, -13108);
+        do Memory.poke(memAddress +160, 13107);
+        do Memory.poke(memAddress +192, 13107);
+        do Memory.poke(memAddress +224, -1);
+        do Memory.poke(memAddress +256, -1);
+        return;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+}
