@@ -13,6 +13,8 @@ class GameField {
         let aleksey = Aleksey.new();
 
         while (~exit) {
+
+            do aleksey.clearHands();
             while (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) {
                 let key = Keyboard.keyPressed();
                 do aleksey.setRotation(0);
@@ -20,6 +22,7 @@ class GameField {
                 let previousKey = key;
             }
 
+            do aleksey.clearHands();
             while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80)) {
                 let previousKey = key;
                 let key = Keyboard.keyPressed();
