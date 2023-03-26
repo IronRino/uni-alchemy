@@ -1,9 +1,11 @@
 class Nandik{
 
     field int position;
+    field int road;
 
-    constructor Nandik new(int location){
+    constructor Nandik new(int location, int side){
         let position = location;
+        let road = side;
         return this;
     }
 
