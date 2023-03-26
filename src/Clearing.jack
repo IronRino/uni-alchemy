@@ -1,5 +1,4 @@
 class Clearing {
-    // to avoid deletion
 
     function void clearAlekseyHandUpLeft(int location) {
         var int memAddress;
@@ -330,6 +329,28 @@ class Clearing {
     }
 
     function void clearAmogus(int location) {
+        var int memAddress; 
+        let memAddress = 16384+location;
+        do Memory.poke(memAddress, 0);
+        do Memory.poke(memAddress +32, 0);
+        do Memory.poke(memAddress +64, 0);
+        do Memory.poke(memAddress +96, 0);
+        do Memory.poke(memAddress +128, 0);
+        do Memory.poke(memAddress +160, 0);
+        do Memory.poke(memAddress +192, 0);
+        do Memory.poke(memAddress +224, 0);
+        do Memory.poke(memAddress +256, 0);
+        do Memory.poke(memAddress +288, 0);
+        do Memory.poke(memAddress +320, 0);
+        do Memory.poke(memAddress +352, 0);
+        do Memory.poke(memAddress +384, 0);
+        do Memory.poke(memAddress +416, 0);
+        do Memory.poke(memAddress +448, 0);
+        do Memory.poke(memAddress +480, 0);
+        return;
+    }
+
+    function void clearNandik(int location) {
         var int memAddress; 
         let memAddress = 16384+location;
         do Memory.poke(memAddress, 0);
