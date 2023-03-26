@@ -125,6 +125,9 @@ call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE4
 push local 2
+call Aleksey.clearHands 1
+pop temp 0
+push local 2
 call Aleksey.rotate 1
 pop temp 0
 goto WHILE_EXP2

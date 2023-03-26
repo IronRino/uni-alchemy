@@ -62,6 +62,8 @@ class Aleksey{
         do Clearing.clearAlekseyHandBottomRight(4977);
         do Clearing.clearAlekseyHandStillLeft(4974);
         do Clearing.clearAlekseyHandStillRight(4977);
+        
+        return;
     }
     
     method void dispose() {

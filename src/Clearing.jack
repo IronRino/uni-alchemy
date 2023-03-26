@@ -371,3 +371,4 @@ class Clearing {
         do Memory.poke(memAddress +480, 0);
         return;
     }
+}

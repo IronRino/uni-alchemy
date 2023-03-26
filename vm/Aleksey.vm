@@ -21,24 +21,6 @@ return
 function Aleksey.rotate 0
 push argument 0
 pop pointer 0
-push constant 4620
-call Clearing.clearAlekseyHandUpLeft 1
-pop temp 0
-push constant 4625
-call Clearing.clearAlekseyHandUpRight 1
-pop temp 0
-push constant 4973
-call Clearing.clearAlekseyHandBottomLeft 1
-pop temp 0
-push constant 4977
-call Clearing.clearAlekseyHandBottomRight 1
-pop temp 0
-push constant 4974
-call Clearing.clearAlekseyHandStillLeft 1
-pop temp 0
-push constant 4977
-call Clearing.clearAlekseyHandStillRight 1
-pop temp 0
 push this 0
 push constant 0
 eq
@@ -116,6 +98,29 @@ push constant 4977
 call Drawing.drawAlekseyHandBottomRight 1
 pop temp 0
 label IF_FALSE4
+push constant 0
+return
+function Aleksey.clearHands 0
+push argument 0
+pop pointer 0
+push constant 4620
+call Clearing.clearAlekseyHandUpLeft 1
+pop temp 0
+push constant 4625
+call Clearing.clearAlekseyHandUpRight 1
+pop temp 0
+push constant 4973
+call Clearing.clearAlekseyHandBottomLeft 1
+pop temp 0
+push constant 4977
+call Clearing.clearAlekseyHandBottomRight 1
+pop temp 0
+push constant 4974
+call Clearing.clearAlekseyHandStillLeft 1
+pop temp 0
+push constant 4977
+call Clearing.clearAlekseyHandStillRight 1
+pop temp 0
 push constant 0
 return
 function Aleksey.dispose 0
