@@ -1,0 +1,6 @@
+function Main.main 1
+push constant 4879
+call Aleksey.new 1
+pop local 0
+push constant 0
+return

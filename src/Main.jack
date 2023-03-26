@@ -1,0 +1,8 @@
+class Main {
+    function void main(){
+        var Aleksey aleksey;
+        let aleksey = Aleksey.new(4879);
+        do aleksey.dispose();
+        return;
+    }
+}

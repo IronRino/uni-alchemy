@@ -1,0 +1,36 @@
+class Amogus{
+
+    field int location;
+
+    constructor Amogus new(){
+        do drawAmogus();
+        return this;
+    }
+
+    method void drawAmogus(int location) {
+        var int memAddress; 
+        let memAddress = 16384+location;
+        do Memory.poke(memAddress, 8176);
+        do Memory.poke(memAddress +32, 16376);
+        do Memory.poke(memAddress +64, 32764);
+        do Memory.poke(memAddress +96, 32764);
+        do Memory.poke(memAddress +128, -16130);
+        do Memory.poke(memAddress +160, -32641);
+        do Memory.poke(memAddress +192, -32641);
+        do Memory.poke(memAddress +224, -16129);
+        do Memory.poke(memAddress +256, 32767);
+        do Memory.poke(memAddress +288, 32767);
+        do Memory.poke(memAddress +320, 32766);
+        do Memory.poke(memAddress +352, 32764);
+        do Memory.poke(memAddress +384, 32764);
+        do Memory.poke(memAddress +416, 32764);
+        do Memory.poke(memAddress +448, 32508);
+        do Memory.poke(memAddress +480, 15480);
+        return;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+}
