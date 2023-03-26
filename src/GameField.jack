@@ -20,16 +20,17 @@ class GameField {
                 let previousKey = key;
             }
 
-            do aleksey.clearHands();
-
-            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80) & (previousKey = key)) {
+            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80)) {
+                let previousKey = key;
                 let key = Keyboard.keyPressed();
-                if (key = 140) { let exit = true; } // Escape
+                if (~(key = previousKey)) { do aleksey.clearHands(); }
+
                 if (key = 87) { do aleksey.setRotation(1); } // W
                 if (key = 80) { do aleksey.setRotation(2); } // P
                 if (key = 83) { do aleksey.setRotation(3); } // S
                 if (key = 76) { do aleksey.setRotation(4); } // L
-                let previousKey = key;
+                if (key = 140) { let exit = true; } // Escape
+
                 do aleksey.rotate();
             }
         }
