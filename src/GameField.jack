@@ -1,0 +1,54 @@
+class GameField {
+
+    method void run() {
+
+        var char key;
+        var boolean exit;
+        var Aleksey aleksey; 
+        var char previousKey;
+
+        let key = 0;
+        let previousKey = 0;
+        let exit = false;
+        let aleksey = Aleksey.new();
+
+        while (~exit) {
+
+            do aleksey.clearHands();
+            while (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) {
+                let key = Keyboard.keyPressed();
+                do aleksey.setRotation(0);
+                do aleksey.rotate();
+                let previousKey = key;
+            }
+
+            do aleksey.clearHands();
+            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80)) {
+                let previousKey = key;
+                let key = Keyboard.keyPressed();
+                if (~(key = previousKey)) { do aleksey.clearHands(); }
+
+                if (key = 87) { do aleksey.setRotation(1); } // W
+                if (key = 80) { do aleksey.setRotation(2); } // P
+                if (key = 83) { do aleksey.setRotation(3); } // S
+                if (key = 76) { do aleksey.setRotation(4); } // L
+                if (key = 140) { let exit = true; } // Escape
+
+                do aleksey.rotate();
+            }
+        }
+
+        return;
+    }
+
+    method void initialize() {
+        do Drawing.drawRoad(4869);
+        do Drawing.drawRoad(4884);
+        do Drawing.drawRoad(6150);
+        do Drawing.drawRoad(6163);
+        do Drawing.drawBoxPlatform(7178);
+        do Drawing.drawAlekseyTorso(4879);
+        do Drawing.drawAlekseyHeadRight(3823);
+        return;
+    }
+}
