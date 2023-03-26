@@ -1,4 +1,4 @@
-function GameSprites.drawAlekseyTorso 1
+function Drawing.drawAlekseyTorso 1
 push constant 16384
 push argument 0
 add
@@ -891,7 +891,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHeadLeft 1
+function Drawing.drawAlekseyHeadLeft 1
 push constant 16384
 push argument 0
 add
@@ -1308,7 +1308,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHeadRight 1
+function Drawing.drawAlekseyHeadRight 1
 push constant 16384
 push argument 0
 add
@@ -1725,7 +1725,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHandUpLeft 1
+function Drawing.drawAlekseyHandUpLeft 1
 push constant 16384
 push argument 0
 add
@@ -2048,7 +2048,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHandUpRight 1
+function Drawing.drawAlekseyHandUpRight 1
 push constant 16384
 push argument 0
 add
@@ -2369,7 +2369,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHandBottomLeft 1
+function Drawing.drawAlekseyHandBottomLeft 1
 push constant 16384
 push argument 0
 add
@@ -2682,7 +2682,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHandBottomRight 1
+function Drawing.drawAlekseyHandBottomRight 1
 push constant 16384
 push argument 0
 add
@@ -2989,7 +2989,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHandStillLeft 1
+function Drawing.drawAlekseyHandStillLeft 1
 push constant 16384
 push argument 0
 add
@@ -3293,7 +3293,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAlekseyHandStillRight 1
+function Drawing.drawAlekseyHandStillRight 1
 push constant 16384
 push argument 0
 add
@@ -3604,7 +3604,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawAmogus 1
+function Drawing.drawAmogus 1
 push constant 16384
 push argument 0
 add
@@ -3709,7 +3709,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawNandik 1
+function Drawing.drawNandik 1
 push constant 16384
 push argument 0
 add
@@ -3812,7 +3812,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawRoad 1
+function Drawing.drawRoad 1
 push constant 0
 pop local 0
 label WHILE_EXP0
@@ -3825,7 +3825,7 @@ if-goto WHILE_END0
 push argument 0
 push local 0
 add
-call GameSprites.drawRoadSegment 1
+call Drawing.drawRoadSegment 1
 pop temp 0
 push local 0
 push constant 1
@@ -3835,7 +3835,7 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function GameSprites.drawRoadSegment 1
+function Drawing.drawRoadSegment 1
 push constant 16384
 push argument 0
 add
@@ -3896,7 +3896,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawBoxPlatform 1
+function Drawing.drawBoxPlatform 1
 push constant 0
 pop local 0
 label WHILE_EXP0
@@ -3909,28 +3909,28 @@ if-goto WHILE_END0
 push argument 0
 push local 0
 add
-call GameSprites.drawBox0 1
+call Drawing.drawBox0 1
 pop temp 0
 push argument 0
 push local 0
 add
 push constant 1
 add
-call GameSprites.drawBox1 1
+call Drawing.drawBox1 1
 pop temp 0
 push argument 0
 push local 0
 add
 push constant 2
 add
-call GameSprites.drawBox2 1
+call Drawing.drawBox2 1
 pop temp 0
 push argument 0
 push local 0
 add
 push constant 3
 add
-call GameSprites.drawBox3 1
+call Drawing.drawBox3 1
 pop temp 0
 push local 0
 push constant 4
@@ -3954,28 +3954,28 @@ if-goto WHILE_END1
 push argument 0
 push local 0
 add
-call GameSprites.drawBox3 1
+call Drawing.drawBox3 1
 pop temp 0
 push argument 0
 push local 0
 add
 push constant 1
 add
-call GameSprites.drawBox2 1
+call Drawing.drawBox2 1
 pop temp 0
 push argument 0
 push local 0
 add
 push constant 2
 add
-call GameSprites.drawBox1 1
+call Drawing.drawBox1 1
 pop temp 0
 push argument 0
 push local 0
 add
 push constant 3
 add
-call GameSprites.drawBox0 1
+call Drawing.drawBox0 1
 pop temp 0
 push local 0
 push constant 4
@@ -3985,7 +3985,7 @@ goto WHILE_EXP1
 label WHILE_END1
 push constant 0
 return
-function GameSprites.drawBox0 1
+function Drawing.drawBox0 1
 push constant 16384
 push argument 0
 add
@@ -4102,7 +4102,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawBox1 1
+function Drawing.drawBox1 1
 push constant 16384
 push argument 0
 add
@@ -4219,7 +4219,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawBox2 1
+function Drawing.drawBox2 1
 push constant 16384
 push argument 0
 add
@@ -4336,7 +4336,7 @@ call Memory.poke 2
 pop temp 0
 push constant 0
 return
-function GameSprites.drawBox3 1
+function Drawing.drawBox3 1
 push constant 16384
 push argument 0
 add

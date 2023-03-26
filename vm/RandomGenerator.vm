@@ -1,0 +1,56 @@
+function RandomGenerator.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push constant 29382
+pop this 0
+push constant 2984
+pop this 1
+push constant 32767
+pop this 2
+push argument 0
+pop this 3
+push pointer 0
+return
+function RandomGenerator.next 1
+push argument 0
+pop pointer 0
+push argument 1
+push argument 1
+push argument 2
+call Math.divide 2
+push argument 2
+call Math.multiply 2
+sub
+pop local 0
+push local 0
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 1
+neg
+call Math.multiply 2
+pop local 0
+label IF_FALSE0
+push local 0
+return
+function RandomGenerator.random 1
+push argument 0
+pop pointer 0
+push this 0
+push this 3
+call Math.multiply 2
+push this 1
+add
+push this 2
+call Random.next 2
+pop local 0
+push local 0
+pop this 3
+push local 0
+push constant 4
+call Random.next 2
+return

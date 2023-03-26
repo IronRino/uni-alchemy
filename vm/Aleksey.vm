@@ -21,6 +21,24 @@ return
 function Aleksey.rotate 0
 push argument 0
 pop pointer 0
+push constant 4620
+call Clearing.clearAlekseyHandUpLeft 1
+pop temp 0
+push constant 4625
+call Clearing.clearAlekseyHandUpRight 1
+pop temp 0
+push constant 4973
+call Clearing.clearAlekseyHandBottomLeft 1
+pop temp 0
+push constant 4977
+call Clearing.clearAlekseyHandBottomRight 1
+pop temp 0
+push constant 4974
+call Clearing.clearAlekseyHandStillLeft 1
+pop temp 0
+push constant 4977
+call Clearing.clearAlekseyHandStillRight 1
+pop temp 0
 push this 0
 push constant 0
 eq
@@ -28,10 +46,10 @@ if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 4974
-call GameSprites.drawAlekseyHandStillLeft 1
+call Drawing.drawAlekseyHandStillLeft 1
 pop temp 0
 push constant 4977
-call GameSprites.drawAlekseyHandStillRight 1
+call Drawing.drawAlekseyHandStillRight 1
 pop temp 0
 label IF_FALSE0
 push this 0
@@ -41,13 +59,13 @@ if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push constant 3823
-call GameSprites.drawAlekseyHeadLeft 1
+call Drawing.drawAlekseyHeadLeft 1
 pop temp 0
 push constant 4620
-call GameSprites.drawAlekseyHandUpLeft 1
+call Drawing.drawAlekseyHandUpLeft 1
 pop temp 0
 push constant 4977
-call GameSprites.drawAlekseyHandStillRight 1
+call Drawing.drawAlekseyHandStillRight 1
 pop temp 0
 label IF_FALSE1
 push this 0
@@ -57,13 +75,13 @@ if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
 push constant 3823
-call GameSprites.drawAlekseyHeadRight 1
+call Drawing.drawAlekseyHeadRight 1
 pop temp 0
 push constant 4974
-call GameSprites.drawAlekseyHandStillLeft 1
+call Drawing.drawAlekseyHandStillLeft 1
 pop temp 0
 push constant 4625
-call GameSprites.drawAlekseyHandUpRight 1
+call Drawing.drawAlekseyHandUpRight 1
 pop temp 0
 label IF_FALSE2
 push this 0
@@ -73,13 +91,13 @@ if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push constant 3823
-call GameSprites.drawAlekseyHeadLeft 1
+call Drawing.drawAlekseyHeadLeft 1
 pop temp 0
 push constant 4973
-call GameSprites.drawAlekseyHandBottomLeft 1
+call Drawing.drawAlekseyHandBottomLeft 1
 pop temp 0
 push constant 4977
-call GameSprites.drawAlekseyHandStillRight 1
+call Drawing.drawAlekseyHandStillRight 1
 pop temp 0
 label IF_FALSE3
 push this 0
@@ -89,13 +107,13 @@ if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
 push constant 3823
-call GameSprites.drawAlekseyHeadRight 1
+call Drawing.drawAlekseyHeadRight 1
 pop temp 0
 push constant 4974
-call GameSprites.drawAlekseyHandStillLeft 1
+call Drawing.drawAlekseyHandStillLeft 1
 pop temp 0
 push constant 4977
-call GameSprites.drawAlekseyHandBottomRight 1
+call Drawing.drawAlekseyHandBottomRight 1
 pop temp 0
 label IF_FALSE4
 push constant 0
