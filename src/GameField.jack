@@ -1,47 +1,74 @@
 class GameField {
 
-    method void run() {
+    function void run() {
 
-        var char key;
+        var char key, previousKey;
+
+        var Array objects;
+        var int objectCount;
+        var int i;
+
+        var Aleksey aleksey;
+
+        var int road;
+        var RandomGenerator rng;
+
+        var int moveTick;
+        var int maxSpawnTick;
+        var int spawnTick;
+
         var boolean exit;
-        var Aleksey aleksey; 
-        var char previousKey;
+
 
         let key = 0;
         let previousKey = 0;
-        let exit = false;
+
+        let objects = Array.new(100);
+        let objectCount = 0;
+        let i = 0;
+
         let aleksey = Aleksey.new();
+        let rng = RandomGenerator.new(100); 
+
+        let moveTick = 200;
+        let maxSpawnTick = 600;
+        let spawnTick = maxSpawnTick;
+
+        let exit = false;
+
 
         while (~exit) {
+            do Sys.wait(10);
 
-            do aleksey.clearHands();
-            while (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) {
-                let key = Keyboard.keyPressed();
-                do aleksey.setRotation(0);
-                do aleksey.rotate();
-                let previousKey = key;
+            if (spawnTick = 0) {
+                let road = rng.random() + 1;
+                let objects[objectCount] = Nandik.new(road, moveTick);
+                let objectCount = objectCount + 1;
+                let spawnTick = maxSpawnTick;
             }
 
-            do aleksey.clearHands();
-            while ((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80)) {
-                let previousKey = key;
-                let key = Keyboard.keyPressed();
-                if (~(key = previousKey)) { do aleksey.clearHands(); }
+            let previousKey = key;
+            let key = Keyboard.keyPressed();
 
-                if (key = 87) { do aleksey.setRotation(1); } // W
-                if (key = 80) { do aleksey.setRotation(2); } // P
-                if (key = 83) { do aleksey.setRotation(3); } // S
-                if (key = 76) { do aleksey.setRotation(4); } // L
-                if (key = 140) { let exit = true; } // Escape
+            if (~(key = previousKey)) { do aleksey.clearHands(); }
 
-                do aleksey.rotate();
+            if (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) { do aleksey.setRotation(0); }
+            if (key = 87) { do aleksey.setRotation(1); } // W
+            if (key = 80) { do aleksey.setRotation(2); } // P
+            if (key = 83) { do aleksey.setRotation(3); } // S
+            if (key = 76) { do aleksey.setRotation(4); } // L
+            if (key = 140) { let exit = true; } // Escape
+            
+            while (i < objectCount) {
+                do objects[i].tryMove(aleksey);
             }
+
+            do aleksey.rotate();
         }
-
         return;
     }
 
-    method void initialize() {
+    function void initialize() {
         do Drawing.drawRoad(4869);
         do Drawing.drawRoad(4884);
         do Drawing.drawRoad(6150);
