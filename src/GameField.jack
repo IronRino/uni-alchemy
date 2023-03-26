@@ -21,9 +21,9 @@ class GameField {
                 let key = Keyboard.keyPressed();
                 if (key = 140) { let exit = true; } // Escape
                 if (key = 87) { do aleksey.setRotation(1); } // W
-                if (key = 76) { do aleksey.setRotation(2); } // L
+                if (key = 80) { do aleksey.setRotation(2); } // P
                 if (key = 83) { do aleksey.setRotation(3); } // S
-                if (key = 80) { do aleksey.setRotation(4); } // P
+                if (key = 76) { do aleksey.setRotation(4); } // L
                 do aleksey.rotate();
             }
         }
