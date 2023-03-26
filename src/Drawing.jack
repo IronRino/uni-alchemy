@@ -1,4 +1,4 @@
-class GameSprites{
+class Drawing{
 
     // Aleksey sprites
     function void drawAlekseyTorso(int location) {
@@ -674,7 +674,7 @@ class GameSprites{
         let i = 0;
         while (~(i = 7))
         {
-            do GameSprites.drawRoadSegment(location+i);
+            do Drawing.drawRoadSegment(location+i);
             let i = i + 1;
         }
         return;
@@ -701,10 +701,10 @@ class GameSprites{
         let i = 0; 
         while (~(i = 12))
         {
-            do GameSprites.drawBox0(location+i);
-            do GameSprites.drawBox1(location+i+1);
-            do GameSprites.drawBox2(location+i+2);
-            do GameSprites.drawBox3(location+i+3);
+            do Drawing.drawBox0(location+i);
+            do Drawing.drawBox1(location+i+1);
+            do Drawing.drawBox2(location+i+2);
+            do Drawing.drawBox3(location+i+3);
             let i = i + 4;
         }
 
@@ -712,10 +712,10 @@ class GameSprites{
         let location = location + 512;
         while (~(i = 12))
         {
-            do GameSprites.drawBox3(location+i);
-            do GameSprites.drawBox2(location+i+1);
-            do GameSprites.drawBox1(location+i+2);
-            do GameSprites.drawBox0(location+i+3);
+            do Drawing.drawBox3(location+i);
+            do Drawing.drawBox2(location+i+1);
+            do Drawing.drawBox1(location+i+2);
+            do Drawing.drawBox0(location+i+3);
             let i = i + 4;
         } 
         return;

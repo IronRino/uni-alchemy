@@ -32,12 +32,13 @@ class GameField {
     }
 
     method void initialize() {
-        do GameSprites.drawRoad(4869);
-        do GameSprites.drawRoad(4884);
-        do GameSprites.drawRoad(6150);
-        do GameSprites.drawRoad(6163);
-        do GameSprites.drawBoxPlatform(7178);
-        do GameSprites.drawAlekseyTorso(4879);
+        do Drawing.drawRoad(4869);
+        do Drawing.drawRoad(4884);
+        do Drawing.drawRoad(6150);
+        do Drawing.drawRoad(6163);
+        do Drawing.drawBoxPlatform(7178);
+        do Drawing.drawAlekseyTorso(4879);
+        do Drawing.drawAlekseyHeadRight(3823);
         return;
     }
 }

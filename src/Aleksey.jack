@@ -17,38 +17,45 @@ class Aleksey{
     }
 
     method void rotate() {
+        do Clearing.clearAlekseyHandUpLeft(4620);
+        do Clearing.clearAlekseyHandUpRight(4625);
+        do Clearing.clearAlekseyHandBottomLeft(4973);
+        do Clearing.clearAlekseyHandBottomRight(4977);
+        do Clearing.clearAlekseyHandStillLeft(4974);
+        do Clearing.clearAlekseyHandStillRight(4977);
+
         // Still
         if (rotation = 0) {
-            do GameSprites.drawAlekseyHandStillLeft(4974);
-            do GameSprites.drawAlekseyHandStillRight(4977);
+            do Drawing.drawAlekseyHandStillLeft(4974);
+            do Drawing.drawAlekseyHandStillRight(4977);
         }
 
         // Up-Left
         if (rotation = 1) {
-            do GameSprites.drawAlekseyHeadLeft(3823);
-            do GameSprites.drawAlekseyHandUpLeft(4620);
-            do GameSprites.drawAlekseyHandStillRight(4977);
+            do Drawing.drawAlekseyHeadLeft(3823);
+            do Drawing.drawAlekseyHandUpLeft(4620);
+            do Drawing.drawAlekseyHandStillRight(4977);
         }
 
         // Up-Right
         if (rotation = 2) {
-            do GameSprites.drawAlekseyHeadRight(3823);
-            do GameSprites.drawAlekseyHandStillLeft(4974);
-            do GameSprites.drawAlekseyHandUpRight(4625);
+            do Drawing.drawAlekseyHeadRight(3823);
+            do Drawing.drawAlekseyHandStillLeft(4974);
+            do Drawing.drawAlekseyHandUpRight(4625);
         }
 
         // Bottom-Left
         if (rotation = 3) {
-            do GameSprites.drawAlekseyHeadLeft(3823);
-            do GameSprites.drawAlekseyHandBottomLeft(4973);
-            do GameSprites.drawAlekseyHandStillRight(4977);
+            do Drawing.drawAlekseyHeadLeft(3823);
+            do Drawing.drawAlekseyHandBottomLeft(4973);
+            do Drawing.drawAlekseyHandStillRight(4977);
         }
 
         // Bottom-Right
         if (rotation = 4) {
-            do GameSprites.drawAlekseyHeadRight(3823);
-            do GameSprites.drawAlekseyHandStillLeft(4974);
-            do GameSprites.drawAlekseyHandBottomRight(4977);
+            do Drawing.drawAlekseyHeadRight(3823);
+            do Drawing.drawAlekseyHandStillLeft(4974);
+            do Drawing.drawAlekseyHandBottomRight(4977);
         }
 
         return;

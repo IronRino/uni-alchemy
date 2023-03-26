@@ -1,4 +1,5 @@
-class Clearing {  
+class Clearing {
+
     function void clearAlekseyHandUpLeft(int location) {
         var int memAddress;
         let memAddress = 16384+location;
