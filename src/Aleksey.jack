@@ -3,11 +3,11 @@ class Aleksey{
     field int positionTorso;
     field int positionHead;
 
-    constructor Aleksey new(int locationTorso, int locaionHead){
+    constructor Aleksey new(int locationTorso, int locationHead){
         let positionTorso = locationTorso;
         let positionHead = locationHead;
         do drawAlekseyTorso(positionTorso);
-        do drawAlekseyHead(positionHead);
+        do drawAlekseyHeadLeft(positionHead);
         return this;
     }
 
