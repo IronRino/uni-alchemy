@@ -92,7 +92,7 @@ call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE1
 push local 0
-push constant 76
+push constant 80
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -114,7 +114,7 @@ call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE3
 push local 0
-push constant 80
+push constant 76
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
@@ -137,22 +137,25 @@ function GameField.initialize 0
 push argument 0
 pop pointer 0
 push constant 4869
-call GameSprites.drawRoad 1
+call Drawing.drawRoad 1
 pop temp 0
 push constant 4884
-call GameSprites.drawRoad 1
+call Drawing.drawRoad 1
 pop temp 0
 push constant 6150
-call GameSprites.drawRoad 1
+call Drawing.drawRoad 1
 pop temp 0
 push constant 6163
-call GameSprites.drawRoad 1
+call Drawing.drawRoad 1
 pop temp 0
 push constant 7178
-call GameSprites.drawBoxPlatform 1
+call Drawing.drawBoxPlatform 1
 pop temp 0
 push constant 4879
-call GameSprites.drawAlekseyTorso 1
+call Drawing.drawAlekseyTorso 1
+pop temp 0
+push constant 3823
+call Drawing.drawAlekseyHeadRight 1
 pop temp 0
 push constant 0
 return
