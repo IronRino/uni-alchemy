@@ -1,0 +1,22 @@
+class GameField {
+    function void run(){
+        var Aleksey aleksey;
+        var Boxes boxes;
+        var Road upLeftRoad, upRightRoad, downLeftRoad, downRightRoad;
+
+        let upLeftRoad = Road.new(4869);
+        let upRightRoad = Road.new(4884);
+        let downLeftRoad = Road.new(6150);
+        let downRightRoad = Road.new(6163);
+        let aleksey = Aleksey.new(4879, 3823, 4974, 4977);
+        let boxes = Boxes.new(7178);
+
+        do upLeftRoad.dispose();
+        do upRightRoad.dispose();
+        do downLeftRoad.dispose();
+        do downRightRoad.dispose();
+        do boxes.dispose();
+        do aleksey.dispose();
+        return;
+    }
+}

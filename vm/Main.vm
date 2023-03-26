@@ -1,18 +1,6 @@
-function Main.main 2
-push constant 4879
-push constant 3823
-push constant 4974
-push constant 4977
-call Aleksey.new 4
-pop local 0
-push constant 7178
-call Boxes.new 1
-pop local 1
-push local 1
-call Boxes.dispose 1
-pop temp 0
+function Main.main 1
 push local 0
-call Aleksey.dispose 1
+call GameField.run 1
 pop temp 0
 push constant 0
 return

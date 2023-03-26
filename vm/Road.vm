@@ -13,6 +13,32 @@ return
 function Road.drawRoad 1
 push argument 0
 pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 7
+eq
+not
+not
+if-goto WHILE_END0
+push pointer 0
+push argument 1
+push local 0
+add
+call Road.drawRoadSegment 2
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Road.drawRoadSegment 1
+push argument 0
+pop pointer 0
 push constant 16384
 push argument 1
 add

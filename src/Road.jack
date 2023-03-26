@@ -9,6 +9,17 @@ class Road{
     }
 
     method void drawRoad(int location) {
+        var int i;
+        let i = 0;
+        while (~(i = 7))
+        {
+            do drawRoadSegment(location+i);
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void drawRoadSegment(int location) {
         var int memAddress; 
         let memAddress = 16384+location;
         do Memory.poke(memAddress +32, -1);

@@ -1,11 +1,7 @@
 class Main {
     function void main(){
-        var Aleksey aleksey;
-        var Boxes boxes;
-        let aleksey = Aleksey.new(4879, 3823, 4974, 4977);
-        let boxes = Boxes.new(7178);
-        do boxes.dispose();
-        do aleksey.dispose();
+        var GameField gameField;
+        do gameField.run();
         return;
     }
 }
