@@ -2,9 +2,9 @@ function RandomGenerator.new 0
 push constant 4
 call Memory.alloc 1
 pop pointer 0
-push constant 29382
+push constant 193
 pop this 0
-push constant 2984
+push constant 298
 pop this 1
 push constant 32767
 pop this 2
@@ -40,17 +40,19 @@ return
 function RandomGenerator.random 1
 push argument 0
 pop pointer 0
+push pointer 0
 push this 0
 push this 3
 call Math.multiply 2
 push this 1
 add
 push this 2
-call Random.next 2
+call RandomGenerator.next 3
 pop local 0
 push local 0
 pop this 3
+push pointer 0
 push local 0
 push constant 4
-call Random.next 2
+call RandomGenerator.next 3
 return

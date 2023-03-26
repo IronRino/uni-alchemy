@@ -1,133 +1,188 @@
-function GameField.run 8
-push argument 0
-pop pointer 0
+function GameField.run 13
 push constant 0
 pop local 0
 push constant 0
-pop local 3
-push constant 0
 pop local 1
-call Aleksey.new 0
+push constant 100
+call Array.new 1
 pop local 2
+push constant 0
+pop local 3
+call Aleksey.new 0
+pop local 5
+push constant 10
+call RandomGenerator.new 1
+pop local 8
+push constant 20
+pop local 9
+push constant 60
+pop local 10
+push local 10
+pop local 11
+push constant 0
+pop local 12
 label WHILE_EXP0
-push local 1
+push local 12
 not
 not
 if-goto WHILE_END0
-push local 0
-pop local 3
-call Keyboard.keyPressed 0
-pop local 0
-push constant 4357
-push constant 1
-call Nandik.new 2
-pop local 4
-push constant 4372
-push constant 2
-call Nandik.new 2
-pop local 5
-push constant 5638
-push constant 3
-call Nandik.new 2
-pop local 6
-push constant 5651
-push constant 4
-call Nandik.new 2
-pop local 7
-push local 0
-push local 3
+push constant 10
+call Sys.wait 1
+pop temp 0
+push local 11
+push constant 0
 eq
-not
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+push local 8
+call RandomGenerator.random 1
+push constant 1
+add
+pop local 7
+push local 3
 push local 2
-call Aleksey.clearHands 1
+add
+push local 7
+push local 9
+call Nandik.new 2
 pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 3
+push constant 1
+add
+pop local 3
+push local 10
+pop local 11
 label IF_FALSE0
+push local 11
+push constant 1
+sub
+pop local 11
 push local 0
-push constant 140
-eq
+pop local 1
+call Keyboard.keyPressed 0
+pop local 0
 push local 0
-push constant 87
+push local 1
 eq
-or
-push local 0
-push constant 76
-eq
-or
-push local 0
-push constant 83
-eq
-or
-push local 0
-push constant 80
-eq
-or
 not
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push local 2
-push constant 0
-call Aleksey.setRotation 2
+push local 5
+call Aleksey.clearHands 1
 pop temp 0
 label IF_FALSE1
 push local 0
+push constant 140
+eq
+push local 0
 push constant 87
 eq
+or
+push local 0
+push constant 76
+eq
+or
+push local 0
+push constant 83
+eq
+or
+push local 0
+push constant 80
+eq
+or
+not
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-push local 2
-push constant 1
+push local 5
+push constant 0
 call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE2
 push local 0
-push constant 80
+push constant 87
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-push local 2
-push constant 2
+push local 5
+push constant 1
 call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE3
 push local 0
-push constant 83
+push constant 80
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
-push local 2
-push constant 3
+push local 5
+push constant 2
 call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE4
 push local 0
-push constant 76
+push constant 83
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-push local 2
-push constant 4
+push local 5
+push constant 3
 call Aleksey.setRotation 2
 pop temp 0
 label IF_FALSE5
 push local 0
-push constant 140
+push constant 76
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
 label IF_TRUE6
+push local 5
+push constant 4
+call Aleksey.setRotation 2
+pop temp 0
+label IF_FALSE6
+push local 0
+push constant 140
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 push constant 0
 not
-pop local 1
-label IF_FALSE6
+pop local 12
+label IF_FALSE7
+push constant 0
+pop local 4
+label WHILE_EXP1
+push local 4
+push local 3
+lt
+not
+if-goto WHILE_END1
+push local 4
 push local 2
+add
+pop pointer 1
+push that 0
+pop local 6
+push local 6
+push local 5
+call Nandik.tryMove 2
+pop temp 0
+push local 4
+push constant 1
+sub
+pop local 4
+goto WHILE_EXP1
+label WHILE_END1
+push local 5
 call Aleksey.rotate 1
 pop temp 0
 goto WHILE_EXP0
@@ -135,8 +190,6 @@ label WHILE_END0
 push constant 0
 return
 function GameField.initialize 0
-push argument 0
-pop pointer 0
 push constant 4869
 call Drawing.drawRoad 1
 pop temp 0

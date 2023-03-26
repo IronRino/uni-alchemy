@@ -10,6 +10,8 @@ class GameField {
 
         var Aleksey aleksey;
 
+        var Nandik nandik;
+
         var int road;
         var RandomGenerator rng;
 
@@ -25,13 +27,12 @@ class GameField {
 
         let objects = Array.new(100);
         let objectCount = 0;
-        let i = 0;
 
         let aleksey = Aleksey.new();
-        let rng = RandomGenerator.new(100); 
+        let rng = RandomGenerator.new(10); 
 
-        let moveTick = 200;
-        let maxSpawnTick = 600;
+        let moveTick = 20;
+        let maxSpawnTick = 60;
         let spawnTick = maxSpawnTick;
 
         let exit = false;
@@ -47,6 +48,8 @@ class GameField {
                 let spawnTick = maxSpawnTick;
             }
 
+            let spawnTick = spawnTick - 1;
+
             let previousKey = key;
             let key = Keyboard.keyPressed();
 
@@ -59,8 +62,12 @@ class GameField {
             if (key = 76) { do aleksey.setRotation(4); } // L
             if (key = 140) { let exit = true; } // Escape
             
+            let i = 0;
+
             while (i < objectCount) {
-                do objects[i].tryMove(aleksey);
+                let nandik = objects[i];
+                do nandik.tryMove(aleksey); 
+                let i = i - 1;
             }
 
             do aleksey.rotate();

@@ -1,9 +1,7 @@
-function Main.main 1
-push local 0
-call GameField.initialize 1
+function Main.main 0
+call GameField.initialize 0
 pop temp 0
-push local 0
-call GameField.run 1
+call GameField.run 0
 pop temp 0
 push constant 0
 return

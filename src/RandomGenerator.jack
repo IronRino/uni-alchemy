@@ -3,8 +3,8 @@ class RandomGenerator
     field int random1, random2, maxValue, factor;
     
     constructor RandomGenerator new(int button) {
-        let random1 = 29382;
-        let random2 = 2984;
+        let random1 = 193;
+        let random2 = 298;
         let maxValue = 32767;
         let factor = button;
         return this;
@@ -21,8 +21,8 @@ class RandomGenerator
 
     method int random() {
         var int rand;
-        let rand = Random.next(random1 * factor + random2, maxValue);
+        let rand = next(random1 * factor + random2, maxValue);
         let factor = rand;
-        return Random.next(rand, 4);
+        return next(rand, 4);
     }
 }
