@@ -17,12 +17,6 @@ class Aleksey{
     }
 
     method void rotate() {
-        do Clearing.clearAlekseyHandUpLeft(4620);
-        do Clearing.clearAlekseyHandUpRight(4625);
-        do Clearing.clearAlekseyHandBottomLeft(4973);
-        do Clearing.clearAlekseyHandBottomRight(4977);
-        do Clearing.clearAlekseyHandStillLeft(4974);
-        do Clearing.clearAlekseyHandStillRight(4977);
 
         // Still
         if (rotation = 0) {
@@ -57,8 +51,17 @@ class Aleksey{
             do Drawing.drawAlekseyHandStillLeft(4974);
             do Drawing.drawAlekseyHandBottomRight(4977);
         }
-
+        
         return;
+    }
+
+    method void clearHands() {
+        do Clearing.clearAlekseyHandUpLeft(4620);
+        do Clearing.clearAlekseyHandUpRight(4625);
+        do Clearing.clearAlekseyHandBottomLeft(4973);
+        do Clearing.clearAlekseyHandBottomRight(4977);
+        do Clearing.clearAlekseyHandStillLeft(4974);
+        do Clearing.clearAlekseyHandStillRight(4977);
     }
     
     method void dispose() {

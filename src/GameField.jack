@@ -24,6 +24,8 @@ class GameField {
                 if (key = 80) { do aleksey.setRotation(2); } // P
                 if (key = 83) { do aleksey.setRotation(3); } // S
                 if (key = 76) { do aleksey.setRotation(4); } // L
+
+                do aleksey.clearHands();
                 do aleksey.rotate();
             }
         }
