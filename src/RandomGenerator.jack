@@ -1,33 +1,20 @@
-class RandomGenerator 
-{
-    field int random1, random2, maxValue, factor;
+class Random {
     
-    constructor RandomGenerator new(int button) {
-        let random1 = 3731;
-        let random2 = 12345;
-        let maxValue = 32767;
-        let factor = button;
-        return this;
+    field int rand;
+
+    function void setSeed(int seed) {
+        let rand = seed;
     }
 
-    method int next(int a, int b) {
+    function int mod(int dividend, int divider) {
         var int remainder;
-        let remainder = a - ((a / b) * b);
-        if (remainder < 0){
-            let remainder = remainder * -1;
-        }
+        let remainder = dividend - ((dividend / divider) * divider);
         return remainder;
     }
 
-    method int random(int max) {
-        var int rand;
-        let rand = next(random1 * factor + random2, maxValue);
-        let factor = rand;
-        return next(rand, max);
-    }
-
-    method void dispose() {
-        do Memory.deAlloc(this);
-        return;
+    function int next(int max) {
+        var int result;
+        let result = mod(rand, max);
+        return result;
     }
 }

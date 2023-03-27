@@ -1,24 +1,17 @@
 class GameField {
 
-    function void run() {
+    function void run(int seed) {
 
         var char key, previousKey;
 
         var Aleksey aleksey;
-        var int alekseyRotation;
+        var int alekseyRotation, roadPosition;
 
         var Obstacle obstacle;
-        var boolean obstacleShouldMove;
-        var boolean obstacleCanSpawn;
-
-        var int road, roadPosition;
-        var RandomGenerator rng;
-        var int randomObstacle;
-        var int seed;
-
-        var boolean isNandik;
-
+        var boolean obstacleShouldMove, obstacleCanSpawn, isNandik;
         var int moveTick;
+
+        var int randomRoad, randomObstacle;
 
         var boolean exit;
 
@@ -27,32 +20,36 @@ class GameField {
         let previousKey = 0;
 
         let aleksey = Aleksey.new();
-        let rng = RandomGenerator.new(91); 
-        let seed = 0;
 
         let obstacleCanSpawn = true;
         let moveTick = 50;
 
         let exit = false;
-        
+
 
         while (~exit) {
             do Sys.wait(10);
-            let seed = seed + 1;
-            do Random.SetSeed(seed);
-            if (obstacleCanSpawn) {
-                let randomObstacle = Random.Range(100);
-                if (randomObstacle > 75) { let isNandik = false; }
-                if (~(randomObstacle > 75)) { let isNandik = true; }
+            do Random.setSeed(seed);
 
-                let road = Random.Range(4) + 1;
-                let obstacle = Obstacle.new(road, moveTick, isNandik);
+            if (obstacleCanSpawn) {
+                let randomObstacle = Random.next(4);
+                if (randomObstacle = 0) { let isNandik = false; }
+                else { let isNandik = true; }
+
+                let randomRoad = Random.next(4) + 1;
+                let obstacle = Obstacle.new(randomRoad, moveTick, isNandik);
                 let obstacleCanSpawn = false;
-                if (moveTick > 10){ let moveTick = moveTick - 5; }
+                if (moveTick > 5) { let moveTick = moveTick - 5; }
             }
 
             let previousKey = key;
             let key = Keyboard.keyPressed();
+            
+            if (key = 0) { let seed = seed + 1 }
+            else { let seed = seed + key; }
+            if (seed > 30000) { let seed = 13; }
+
+
             if (~(key = previousKey)) { do aleksey.clearHands(); }
 
             if (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) { do aleksey.setRotation(0); }
@@ -75,10 +72,8 @@ class GameField {
                     let obstacleCanSpawn = true;
                 }
             }
-
             do aleksey.rotate();
         }
-
         do rng.dispose();
         return;
     }

@@ -3,9 +3,8 @@ class Main {
         var int seed;
         do Output.printString("Press any key to start");
         while (seed = 0) { let seed = Keyboard.keyPressed(); }
-        do Random.SetSeed(seed);
         do GameField.initialize();
-        do GameField.run();
+        do GameField.run(seed);
         return;
     }
 }
