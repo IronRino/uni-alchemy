@@ -7,7 +7,7 @@ class Main {
         do Output.moveCursor(0, 0);
         do Output.printString("                           ");
         do GameField.initialize();
-        do GameField.run();
+        do GameField.run(seed);
         return;
     }
 }

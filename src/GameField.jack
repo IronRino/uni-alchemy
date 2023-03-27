@@ -1,6 +1,6 @@
 class GameField {
 
-    function void run() {
+    function void run(int seed) {
 
         var Score score;
 
@@ -14,8 +14,8 @@ class GameField {
         var boolean obstacleCanSpawn;
 
         var int road, roadPosition;
-        var RandomGenerator rng;
-        var int randomObstacle;
+        var Random rng;
+        var int randomValue, increase;
 
         var boolean isNandik;
 
@@ -26,11 +26,12 @@ class GameField {
 
         let score = Score.new();
 
-        let key = 0;
-        let previousKey = 0;
+        let key = 3;
+        let previousKey = 3;
 
         let aleksey = Aleksey.new();
-        let rng = RandomGenerator.new(91);
+        let rng = Random.new();
+        let randomValue = seed;
 
         let obstacleCanSpawn = true;
         let moveTick = 50;
@@ -41,11 +42,13 @@ class GameField {
         while (~exit) {
             do Sys.wait(10);
             if (obstacleCanSpawn) {
-                let randomObstacle = rng.random(100);
-                if (randomObstacle > 75) { let isNandik = false; }
-                if (~(randomObstacle > 75)) { let isNandik = true; }
+                
+                let randomValue = rng.getNext(randomValue, key + rng[randomValue]);
+                if (randomValue < 13){let isNandik = false;}
+                else {let isNandik = true;}
+                let road = rng[randomValue];
 
-                let road = rng.random(4) + 1;
+
                 let obstacle = Obstacle.new(road, moveTick, isNandik);
                 let obstacleCanSpawn = false;
                 if (moveTick > 10){ let moveTick = moveTick - 5; }
