@@ -62,12 +62,6 @@ class GameField {
             // when time runs out - end game
             if (time = 0) { let exit = true; }
 
-            // print time
-            do Output.moveCursor(1, 5);
-            do Output.printString("   ");
-            do Output.moveCursor(1, 6);
-            do Output.printInt(time);
-
             // spawning things
             if (obstacleCanSpawn) {
                 let road = rng2.getRoad(rngIndex) - 48;
@@ -115,6 +109,9 @@ class GameField {
         }
 
         do Screen.clearScreen();
+
+        do Output.moveCursor(22, 0);
+        do Output.printString("by vitvit & SanAndreas & kaba4ok");
         do Output.moveCursor(7, 28);
         do Output.printString("Time's up!");
         do Output.moveCursor(14, 23);
@@ -143,8 +140,6 @@ class GameField {
     function void printRules() {
         do Output.moveCursor(1, 0);
         do Output.printString("Time: 99");
-        do Output.moveCursor(22, 0);
-        do Output.printString("by vitvit & SanAndreas & kaba4ok");
         do Output.moveCursor(3, 13);
         do Output.printString("Press [W] [S] [L] [P] to catch Nandik!");
         do Output.moveCursor(4, 20);
