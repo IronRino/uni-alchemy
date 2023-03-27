@@ -2,34 +2,31 @@ class GameField {
 
     function void run(int seed) {
 
-        var Score score;
-
         var char key, previousKey;
+
+        var Score score;
 
         var Aleksey aleksey;
         var int alekseyRotation;
 
-        var Obstacle obstacle;
-        var boolean obstacleShouldMove;
-        var boolean obstacleCanSpawn;
-
-        var int road, roadPosition;
         var Random rng;
-        var int randomValue, increase;
+        var int randomValue;
+        var int road, roadPosition;
 
-        var boolean isNandik;
-
+        var Obstacle obstacle;
+        var boolean obstacleShouldMove, obstacleCanSpawn, isNandik;
         var int moveTick;
 
         var boolean exit;
 
 
-        let score = Score.new();
-
         let key = 3;
         let previousKey = 3;
 
+        let score = Score.new();
+
         let aleksey = Aleksey.new();
+        
         let rng = Random.new();
         let randomValue = seed;
 
@@ -40,11 +37,13 @@ class GameField {
         
 
         while (~exit) {
+
             do Sys.wait(10);
+
             if (obstacleCanSpawn) {
                 
                 let randomValue = rng.getNext(randomValue, key + rng[randomValue]);
-                if (randomValue < 13){let isNandik = false;}
+                if (randomValue < 13) { let isNandik = false; }
                 else {let isNandik = true;}
                 let road = rng[randomValue];
 
@@ -58,13 +57,13 @@ class GameField {
             let key = Keyboard.keyPressed();
             if (~(key = previousKey)) { do aleksey.clearHands(); }
 
+            if (key = 140) { let exit = true; } // Escape
+
             if (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) { do aleksey.setRotation(0); }
             if (key = 87) { do aleksey.setRotation(1); } // W
             if (key = 80) { do aleksey.setRotation(2); } // P
             if (key = 83) { do aleksey.setRotation(3); } // S
             if (key = 76) { do aleksey.setRotation(4); } // L
-            if (key = 140) { let exit = true; } // Escape
-            
             let alekseyRotation = aleksey.getRotation();
 
             if (~(obstacle = null)) { 
