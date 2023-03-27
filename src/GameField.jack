@@ -34,6 +34,7 @@ class GameField {
         let moveTick = 50;
 
         let exit = false;
+        
 
         while (~exit) {
             do Sys.wait(10);
@@ -52,7 +53,6 @@ class GameField {
 
             let previousKey = key;
             let key = Keyboard.keyPressed();
-
             if (~(key = previousKey)) { do aleksey.clearHands(); }
 
             if (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) { do aleksey.setRotation(0); }
@@ -75,8 +75,10 @@ class GameField {
                     let obstacleCanSpawn = true;
                 }
             }
+
             do aleksey.rotate();
         }
+
         do rng.dispose();
         return;
     }
