@@ -38,7 +38,7 @@ class GameField {
         let obstacleCanSpawn = true;
         let moveTick = 51;
 
-        let time = 100;
+        let time = 99;
         let maxTick = 100;
         let tick = maxTick;
         let exit = false;
@@ -53,6 +53,10 @@ class GameField {
             if (tick = 0) {
                 let time = time - 1;
                 let tick = maxTick;
+
+                // update time
+                do Output.moveCursor(1, 6);
+                do Output.printInt(time);
             }
 
             // when time runs out - end game
@@ -138,7 +142,7 @@ class GameField {
 
     function void printRules() {
         do Output.moveCursor(1, 0);
-        do Output.printString("Time:");
+        do Output.printString("Time: 99");
         do Output.moveCursor(22, 0);
         do Output.printString("by vitvit & SanAndreas & kaba4ok");
         do Output.moveCursor(3, 13);
