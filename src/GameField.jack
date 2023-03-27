@@ -65,8 +65,10 @@ class GameField {
                 if (nandikShouldMove) { do nandik.move(alekseyRotation); }
                 
                 let roadPosition = nandik.getRoadPosition();
-                if (roadPosition = 7) { do nandik.dispose(); }
-                //let nandik = null;
+                if (roadPosition = 7) { 
+                    do nandik.dispose(); 
+                    let nandik = null;
+                }
                 let nandikCanSpawn = true;
             }
 
