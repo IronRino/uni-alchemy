@@ -10,7 +10,7 @@ class GameField {
         var Array tempObjects;
         var int tempObjectCount;
 
-        var Nandik nandik;
+        var Nandik nandik, object;
 
         var Aleksey aleksey;
 
@@ -26,7 +26,7 @@ class GameField {
         let key = 0;
         let previousKey = 0;
 
-        let objects = Array.new(1000);
+        let objects = Array.new(10);
         let objectCount = 0;
 
         let aleksey = Aleksey.new();
@@ -72,7 +72,7 @@ class GameField {
                 let i = i + 1;
             }
 
-            let tempObjects = Array.new(1000)
+            let tempObjects = Array.new(10);
 
             let i = 0;
             let tempObjectCount = objectCount;
@@ -85,12 +85,16 @@ class GameField {
                 }
             }
             let objectCount = tempObjectCount;
+            do objects.dispose();
             let objects = tempObjects;
+            do tempObjects.dispose();
             let tempObjectCount = 0;
 
             do aleksey.rotate();
 
-            let maxSpawnTick = maxSpawnTick - 1;
+            if (maxSpawnTick > 10){
+                let maxSpawnTick = maxSpawnTick - 1;
+            }
         }
         return;
     }
