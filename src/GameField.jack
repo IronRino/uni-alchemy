@@ -4,10 +4,11 @@ class GameField {
 
         var char key, previousKey;
 
-        var int i;
-
         var Aleksey aleksey;
+        var int alekseyRotation;
+
         var Nandik nandik;
+        var boolean nandikShouldMove;
 
         var int road, roadPosition;
         var RandomGenerator rng;
@@ -18,11 +19,9 @@ class GameField {
 
         var boolean exit;
 
+
         let key = 0;
         let previousKey = 0;
-
-        let objects = Array.new(5);
-        let objectCount = 0;
 
         let aleksey = Aleksey.new();
         let rng = RandomGenerator.new(91); 
@@ -33,13 +32,13 @@ class GameField {
 
         let exit = false;
 
+
         while (~exit) {
             do Sys.wait(10);
 
             if ((spawnTick = 0) & (nandik = null)) {
                 let road = rng.random() + 1;
                 let nandik = Nandik.new(road, moveTick);
-                let objectCount = objectCount + 1;
                 let spawnTick = maxSpawnTick;
             }
 
@@ -58,15 +57,15 @@ class GameField {
             if (key = 76) { do aleksey.setRotation(4); } // L
             if (key = 140) { let exit = true; } // Escape
             
-            do nandik.tryMove(aleksey); 
+            let nandikShouldMove = nandik.tryMove();
+            let alekseyRotation = aleksey.getRotation();
+            
+            if (nandikShouldMove) { do nandik.move(alekseyRotation) }
+
             let roadPosition = nandik.getRoadPosition();
             if (roadPosition = 7) { 
                 do nandik.dispose();
                 let nandik = null; 
-            }
-
-            if (moveTick > 10) {
-                let moveTick = moveTick - 1;
             }
 
             do aleksey.rotate();

@@ -23,24 +23,21 @@ class Nandik {
         return roadPosition;
     }
 
-    method void tryMove(Aleksey aleksey) {
+    method boolean tryMove() {
         let tick = tick - 1;
         if (tick = 0) {
             let tick = maxTick;
-            do move(aleksey);
+            return true;
         }
-        return;
+        return false;
     }
 
-    method void move(Aleksey aleksey) {
-        var int rotation;
-
+    function void move(int rotation) {
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
             do Output.moveCursor(0, 0);
             do Output.printString("    ");
             do Output.moveCursor(0, 0);
-            let rotation = aleksey.getRotation();
             if (rotation = road) {
                 do Output.printString("OK");
                 do Clearing.clearNandik(location);
