@@ -21,7 +21,6 @@ class GameField {
 
         var boolean exit;
 
-
         let key = 0;
         let previousKey = 0;
 
@@ -29,14 +28,13 @@ class GameField {
         let objectCount = 0;
 
         let aleksey = Aleksey.new();
-        let rng = RandomGenerator.new(10); 
+        let rng = RandomGenerator.new(91); 
 
-        let moveTick = 20;
-        let maxSpawnTick = 60;
+        let moveTick = 100;
+        let maxSpawnTick = 200;
         let spawnTick = maxSpawnTick;
 
         let exit = false;
-
 
         while (~exit) {
             do Sys.wait(10);
@@ -52,6 +50,7 @@ class GameField {
 
             let previousKey = key;
             let key = Keyboard.keyPressed();
+            let rng = RandomGenerator.new(key);
 
             if (~(key = previousKey)) { do aleksey.clearHands(); }
 

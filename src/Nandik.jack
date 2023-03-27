@@ -6,9 +6,9 @@ class Nandik {
 
         let road = road1;
         if (road = 1) { let location = 4357; }
-        if (road = 2) { let location = 4372; }
+        if (road = 2) { let location = 4378; }
         if (road = 3) { let location = 5638; }
-        if (road = 4) { let location = 5651; }
+        if (road = 4) { let location = 5657; }
 
         do Drawing.drawNandik(location);
 
@@ -37,10 +37,12 @@ class Nandik {
             let rotation = aleksey.getRotation();
             if (rotation = road) {
                 do Output.printString("OK");
-                do dispose();
+                do Clearing.clearNandik(location);
+                do dispose(); 
                 return;
             }
             do Output.printString("FAIL");
+            do Clearing.clearNandik(location);
             do dispose();
             return;
         }
