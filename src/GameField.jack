@@ -4,13 +4,15 @@ class GameField {
 
         var char key, previousKey;
 
+        var int i;
         var Array objects;
         var int objectCount;
-        var int i;
-
-        var Aleksey aleksey;
+        var Array tempObjects;
+        var int tempObjectCount;
 
         var Nandik nandik;
+
+        var Aleksey aleksey;
 
         var int road, roadPosition;
         var RandomGenerator rng;
@@ -31,7 +33,7 @@ class GameField {
         let rng = RandomGenerator.new(91); 
 
         let moveTick = 100;
-        let maxSpawnTick = 200;
+        let maxSpawnTick = 400;
         let spawnTick = maxSpawnTick;
 
         let exit = false;
@@ -62,19 +64,33 @@ class GameField {
             if (key = 140) { let exit = true; } // Escape
             
             let i = 0;
-
             while (i < objectCount) {
                 let nandik = objects[i];
                 do nandik.tryMove(aleksey); 
                 let roadPosition = nandik.getRoadPosition();
-                if (roadPosition = 7){
-                    do nandik.dispose();
-                    let object[i] = 0; 
-                }
+                if (roadPosition = 7) { do nandik.dispose(); }
                 let i = i + 1;
             }
 
+            let tempObjects = Array.new(1000)
+
+            let i = 0;
+            let tempObjectCount = objectCount;
+            while (i < tempObjectCount) {
+                let object = objects[i];
+                if (~(object = null))
+                {
+                    let tempObjects[tempObjectCount] = object;
+                    let tempObjectCount = tempObjectCount + 1;
+                }
+            }
+            let objectCount = tempObjectCount;
+            let objects = tempObjects;
+            let tempObjectCount = 0;
+
             do aleksey.rotate();
+
+            let maxSpawnTick = maxSpawnTick - 1;
         }
         return;
     }
