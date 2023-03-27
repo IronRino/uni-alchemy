@@ -12,8 +12,7 @@ class Obstacle {
         if (road = 4) { let location = 5657; }
 
         let isNandik = isNandik1;
-        if (isNandik) { do Drawing.drawNandik(location); }
-        else { do Drawing.drawAmogus(location); }
+        do printObstacle();
 
         let tick = maxTick1;
         let maxTick = maxTick1;
@@ -35,30 +34,38 @@ class Obstacle {
         return false;
     }
 
-    method void move(int rotation) {
+    method void move(int rotation, Score score) {
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
             do Output.moveCursor(0, 0);
             do Output.printString("    ");
             do Output.moveCursor(0, 0);
             if (rotation = road) {
-                do Output.printString("OK");
-                if (isNandik) { do Clearing.clearNandik(location); }
-                else { do Clearing.clearAmogus(location); }
+                if (isNandik) { do score.reduceScore(10); }
+                else { do score.increaseScore(20); }
+                do clearObstacle();
                 return;
             }
-            do Output.printString("FAIL");
-            if (isNandik) { do Clearing.clearNandik(location); }
-            else { do Clearing.clearAmogus(location); }
+            if (isNandik) { do score.increaseScore(10); }
+            do clearObstacle();
             return;
         }
 
-        if (isNandik) { do Clearing.clearNandik(location); }
-        else { do Clearing.clearAmogus(location); }
+        do clearObstacle();
         if ((road = 1) | (road = 3)) { let location = location + 1; }
         if ((road = 2) | (road = 4)) { let location = location - 1; }
+        do printObstacle();
+        return;
+    }
+
+    method void printObstacle(){
         if (isNandik) { do Drawing.drawNandik(location); }
         else { do Drawing.drawAmogus(location); }
+        return;
+    }
+    method void clearObstacle(){
+        if (isNandik) { do Clearing.clearNandik(location); }
+        else { do Clearing.clearAmogus(location); }
         return;
     }
 

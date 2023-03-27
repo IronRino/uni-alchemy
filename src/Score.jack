@@ -1,0 +1,37 @@
+class Score{
+    field int score;
+
+    constructor Score new(){
+        let score = 0;
+        do printScore();
+        return this;
+    }
+
+    method void setScore(int value){
+        let score = value;
+        do printScore();
+        return;
+    }
+
+    method void increaseScore(int fine){
+        do setScore(score - fine);
+        do printScore();
+        return;
+    }
+
+    method void reduceScore(int reward){
+        do setScore(score + reward);
+        do printScore();
+        return;
+    }
+
+    method void printScore(){
+        do Output.moveCursor(0, 0);
+        do Output.printString("Score: ");
+        do Output.moveCursor(0, 7);
+        do Output.printString("             ");
+        do Output.moveCursor(0, 7);
+        do Output.printInt(score);
+        return;
+    }
+}

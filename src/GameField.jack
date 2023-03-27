@@ -2,6 +2,8 @@ class GameField {
 
     function void run() {
 
+        var Score score;
+
         var char key, previousKey;
 
         var Aleksey aleksey;
@@ -14,7 +16,6 @@ class GameField {
         var int road, roadPosition;
         var RandomGenerator rng;
         var int randomObstacle;
-        var int seed;
 
         var boolean isNandik;
 
@@ -23,12 +24,13 @@ class GameField {
         var boolean exit;
 
 
+        let score = Score.new();
+
         let key = 0;
         let previousKey = 0;
 
         let aleksey = Aleksey.new();
-        let rng = RandomGenerator.new(91); 
-        let seed = 0;
+        let rng = RandomGenerator.new(91);
 
         let obstacleCanSpawn = true;
         let moveTick = 50;
@@ -38,14 +40,12 @@ class GameField {
 
         while (~exit) {
             do Sys.wait(10);
-            let seed = seed + 1;
-            do Random.SetSeed(seed);
             if (obstacleCanSpawn) {
-                let randomObstacle = Random.Range(100);
+                let randomObstacle = rng.random(100);
                 if (randomObstacle > 75) { let isNandik = false; }
                 if (~(randomObstacle > 75)) { let isNandik = true; }
 
-                let road = Random.Range(4) + 1;
+                let road = rng.random(4) + 1;
                 let obstacle = Obstacle.new(road, moveTick, isNandik);
                 let obstacleCanSpawn = false;
                 if (moveTick > 10){ let moveTick = moveTick - 5; }
@@ -66,7 +66,7 @@ class GameField {
 
             if (~(obstacle = null)) { 
                 let obstacleShouldMove = obstacle.tryMove(); 
-                if (obstacleShouldMove) { do obstacle.move(alekseyRotation); }
+                if (obstacleShouldMove) { do obstacle.move(alekseyRotation, score); }
                 
                 let roadPosition = obstacle.getRoadPosition();
                 if (roadPosition = 7) { 
