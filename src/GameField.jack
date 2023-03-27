@@ -24,14 +24,14 @@ class GameField {
         let key = 0;
         let previousKey = 0;
 
-        let objects = Array.new(1000);
+        let objects = Array.new(5);
         let objectCount = 0;
 
         let aleksey = Aleksey.new();
         let rng = RandomGenerator.new(91); 
 
-        let moveTick = 100;
-        let maxSpawnTick = 200;
+        let moveTick = 50;
+        let maxSpawnTick = 400;
         let spawnTick = maxSpawnTick;
 
         let exit = false;
@@ -62,7 +62,6 @@ class GameField {
             if (key = 140) { let exit = true; } // Escape
             
             let i = 0;
-
             while (i < objectCount) {
                 let nandik = objects[i];
                 if (~(nandik = null)){
@@ -74,6 +73,19 @@ class GameField {
                     }
                 }
                 let i = i + 1;
+            }
+
+            // clear when too many
+            if (objectCount > 4) {
+                let i = 0;
+                while (i < objectCount) {
+                    let nandik = objects[i];
+                    do nandik.dispose();
+                    let i = i + 1;
+                }
+                do objects.dispose();
+                let objects = Array.new(5);
+                let objectCount = 0;
             }
 
             do aleksey.rotate();
