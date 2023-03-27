@@ -29,7 +29,7 @@ class GameField {
 
         let nandikCanSpawn = true;
         let moveTick = 50;
-        let maxSpawnTick = 400;
+        let maxSpawnTick = 200;
         let spawnTick = 100;
 
         let exit = false;
@@ -39,11 +39,12 @@ class GameField {
             do Sys.wait(10);
 
             let spawnTick = spawnTick - 1;
-            if ((spawnTick = 0) & (nandikCanSpawn)) {
+            if (nandikCanSpawn) {
                 let road = rng.random() + 1;
                 let nandik = Nandik.new(road, moveTick);
                 let nandikCanSpawn = false;
                 let spawnTick = maxSpawnTick;
+                if (moveTick > 10){ let moveTick = moveTick - 5; }
             }
 
             let previousKey = key;
@@ -68,10 +69,9 @@ class GameField {
                 if (roadPosition = 7) { 
                     do nandik.dispose(); 
                     let nandik = null;
+                    let nandikCanSpawn = true;
                 }
-                let nandikCanSpawn = true;
             }
-
             do aleksey.rotate();
         }
         do rng.dispose();
