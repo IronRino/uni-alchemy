@@ -94,19 +94,19 @@ class GameField {
         return;
     }
 
-    function void writeRules() {
+    function void printRules() {
         do Output.moveCursor(3, 13);
-        do Output.printString("Press [W] [S] [L] [P] to catch Nandik!")
+        do Output.printString("Press [W] [S] [L] [P] to catch Nandik!");
         do Output.moveCursor(4, 20);
-        do Output.printString("Don't catch Impostors!!!")
+        do Output.printString("Don't catch Impostors!!!");
         do Output.moveCursor(12, 6);
-        do Output.printString("[W]")
+        do Output.printString("[W]");
         do Output.moveCursor(16, 6);
-        do Output.printString("[S]")
+        do Output.printString("[S]");
         do Output.moveCursor(12, 57);
-        do Output.printString("[P]")
+        do Output.printString("[P]");
         do Output.moveCursor(16, 57);
-        do Output.printString("[L]")
+        do Output.printString("[L]");
         return;
     }
 }
