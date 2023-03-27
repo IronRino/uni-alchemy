@@ -39,7 +39,7 @@ class GameField {
         let moveTick = 51;
 
         let time = 99;
-        let maxTick = 100;
+        let maxTick = 70;
         let tick = maxTick;
         let exit = false;
         
