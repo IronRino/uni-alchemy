@@ -38,7 +38,7 @@ class GameField {
         let obstacleCanSpawn = true;
         let moveTick = 51;
 
-        let time = 99;
+        let time = 60;
         let maxTick = 70;
         let tick = maxTick;
         let exit = false;
@@ -57,6 +57,18 @@ class GameField {
                 // update time
                 do Output.moveCursor(1, 6);
                 do Output.printInt(time);
+
+                if (time = 55) { let moveTick = 40; }
+                if (time = 50) { let moveTick = 30; }
+                if (time = 45) { let moveTick = 20; }
+                if (time = 40) { let moveTick = 15; }
+                if (time = 35) { let moveTick = 10; }
+                if (time = 30) { let moveTick = 7; }
+                if (time = 25) { let moveTick = 5; }
+                if (time = 20) { let moveTick = 4; }
+                if (time = 15) { let moveTick = 3; }
+                if (time = 10) { let moveTick = 2; }
+                if (time = 5) { let moveTick = 1; }
             }
 
             // when time runs out - end game
@@ -74,8 +86,6 @@ class GameField {
 
                 let rngIndex = rngIndex + 1;
                 if (rngIndex > 255) { let rngIndex = 0; }
-
-                if (moveTick > 1) { let moveTick = moveTick - 5; }
             }
            
             // read key stuff
