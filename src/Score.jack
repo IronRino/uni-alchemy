@@ -38,4 +38,9 @@ class Score{
         do Output.printInt(score);
         return;
     }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
 }

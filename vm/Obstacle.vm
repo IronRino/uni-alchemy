@@ -147,7 +147,12 @@ push argument 2
 push constant 10
 call Score.increaseScore 2
 pop temp 0
+goto IF_END3
 label IF_FALSE3
+push argument 2
+call Score.printScore 1
+pop temp 0
+label IF_END3
 push pointer 0
 call Obstacle.clearObstacle 1
 pop temp 0

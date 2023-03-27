@@ -123,7 +123,21 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
+push local 0
+push local 0
+call Math.multiply 2
+pop local 0
+push local 0
+push local 0
+push constant 256
+call Math.divide 2
+push constant 256
+call Math.multiply 2
+sub
+pop local 0
 call GameField.initialize 0
+pop temp 0
+call GameField.printRules 0
 pop temp 0
 push local 0
 call GameField.run 1
