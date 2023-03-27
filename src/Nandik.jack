@@ -32,7 +32,7 @@ class Nandik {
         return false;
     }
 
-    function void move(int rotation) {
+    method void move(int rotation) {
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
             do Output.moveCursor(0, 0);

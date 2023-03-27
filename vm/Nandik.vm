@@ -71,14 +71,13 @@ goto IF_FALSE0
 label IF_TRUE0
 push this 3
 pop this 2
-push pointer 0
-push argument 1
-call Nandik.move 2
-pop temp 0
+push constant 0
+not
+return
 label IF_FALSE0
 push constant 0
 return
-function Nandik.move 1
+function Nandik.move 0
 push argument 0
 pop pointer 0
 push this 4
@@ -112,9 +111,6 @@ push constant 0
 call Output.moveCursor 2
 pop temp 0
 push argument 1
-call Aleksey.getRotation 1
-pop local 0
-push local 0
 push this 1
 eq
 if-goto IF_TRUE1

@@ -60,7 +60,7 @@ class GameField {
             let nandikShouldMove = nandik.tryMove();
             let alekseyRotation = aleksey.getRotation();
             
-            if (nandikShouldMove) { do nandik.move(alekseyRotation) }
+            if (nandikShouldMove) { do nandik.move(alekseyRotation); }
 
             let roadPosition = nandik.getRoadPosition();
             if (roadPosition = 7) { 
