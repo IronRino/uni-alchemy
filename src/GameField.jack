@@ -58,8 +58,11 @@ class GameField {
 
                 let obstacle = Obstacle.new(road, moveTick, isNandik);
                 let obstacleCanSpawn = false;
-                let rngIndex = rngIndex - 1;
-                if (moveTick > 10){ let moveTick = moveTick - 5; }
+
+                let rngIndex = rngIndex + 1;
+                if (rngIndex > 255) { let rngIndex = 0; }
+
+                if (moveTick > 10) { let moveTick = moveTick - 5; }
             }
 
             let previousKey = key;
