@@ -6,10 +6,10 @@ class Main {
         while (seed = 0) { let seed = Keyboard.keyPressed(); }
         do Output.moveCursor(0, 0);
         do Output.printString("                           ");
-        
+
         do GameField.initialize();
         do GameField.printRules();
-        do GameField.run();
+        do GameField.run(seed);
         return;
     }
 }
