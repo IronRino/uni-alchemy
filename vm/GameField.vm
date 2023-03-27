@@ -165,7 +165,7 @@ eq
 if-goto IF_TRUE11
 goto IF_FALSE11
 label IF_TRUE11
-push constant 5
+push constant 4
 pop local 14
 label IF_FALSE11
 push local 15
@@ -174,7 +174,7 @@ eq
 if-goto IF_TRUE12
 goto IF_FALSE12
 label IF_TRUE12
-push constant 4
+push constant 3
 pop local 14
 label IF_FALSE12
 label IF_FALSE0
