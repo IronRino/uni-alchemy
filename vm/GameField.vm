@@ -176,6 +176,13 @@ pop pointer 1
 push that 0
 pop local 6
 push local 6
+push constant 0
+eq
+not
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push local 6
 push local 5
 call Nandik.tryMove 2
 pop temp 0
@@ -185,14 +192,21 @@ pop local 8
 push local 8
 push constant 7
 eq
-if-goto IF_TRUE8
-goto IF_FALSE8
-label IF_TRUE8
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
 push local 6
 call Nandik.dispose 1
 pop temp 0
+push local 4
+push local 2
+add
 push constant 0
-pop local 6
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE9
 label IF_FALSE8
 push local 4
 push constant 1

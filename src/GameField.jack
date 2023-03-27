@@ -65,11 +65,13 @@ class GameField {
 
             while (i < objectCount) {
                 let nandik = objects[i];
-                do nandik.tryMove(aleksey); 
-                let roadPosition = nandik.getRoadPosition();
-                if (roadPosition = 7){
-                    do nandik.dispose();
-                    let object[i] = 0; 
+                if (~(nandik = null)){
+                    do nandik.tryMove(aleksey); 
+                    let roadPosition = nandik.getRoadPosition();
+                    if (roadPosition = 7){
+                        do nandik.dispose();
+                        let objects[i] = null; 
+                    }
                 }
                 let i = i + 1;
             }
