@@ -12,6 +12,7 @@ class GameField {
         var int moveTick;
 
         var int randomRoad, randomObstacle;
+        var int randomSeed;
 
         var boolean exit;
 
@@ -23,13 +24,15 @@ class GameField {
 
         let obstacleCanSpawn = true;
         let moveTick = 50;
+        
+        let randomSeed = 0;
 
         let exit = false;
 
 
         while (~exit) {
             do Sys.wait(10);
-            do Random.setSeed(seed);
+            do Random.setSeed(randomSeed);
 
             if (obstacleCanSpawn) {
                 let randomObstacle = Random.next(4);
@@ -38,17 +41,17 @@ class GameField {
 
                 let randomRoad = Random.next(4) + 1;
                 let obstacle = Obstacle.new(randomRoad, moveTick, isNandik);
+
                 let obstacleCanSpawn = false;
+                let seed = seed + 1;
                 if (moveTick > 5) { let moveTick = moveTick - 5; }
             }
 
             let previousKey = key;
             let key = Keyboard.keyPressed();
             
-            if (key = 0) { let seed = seed + 1 }
-            else { let seed = seed + key; }
-            if (seed > 30000) { let seed = 13; }
-
+            let randomSeed = randomSeed + seed;
+            if (seed > 30000) { let randomSeed = 13; }
 
             if (~(key = previousKey)) { do aleksey.clearHands(); }
 
