@@ -51,6 +51,11 @@ push constant 0
 pop this 4
 push pointer 0
 return
+function Nandik.getRoadPosition 0
+push argument 0
+pop pointer 0
+push this 4
+return
 function Nandik.tryMove 0
 push argument 0
 pop pointer 0
@@ -90,6 +95,22 @@ push constant 0
 push constant 0
 call Output.moveCursor 2
 pop temp 0
+push constant 4
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+push constant 0
+call Output.moveCursor 2
+pop temp 0
 push argument 1
 call Aleksey.getRotation 1
 pop local 0
@@ -99,20 +120,34 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
+push constant 2
+call String.new 1
+push constant 79
+call String.appendChar 2
+push constant 75
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
 push this 0
 call Clearing.clearNandik 1
-pop temp 0
-push pointer 0
-call Nandik.dispose 1
 pop temp 0
 push constant 0
 return
 label IF_FALSE1
+push constant 4
+call String.new 1
+push constant 70
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 76
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
 push this 0
 call Clearing.clearNandik 1
-pop temp 0
-push pointer 0
-call Nandik.dispose 1
 pop temp 0
 push constant 0
 return

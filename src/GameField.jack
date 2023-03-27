@@ -12,7 +12,7 @@ class GameField {
 
         var Nandik nandik;
 
-        var int road;
+        var int road, roadPosition;
         var RandomGenerator rng;
 
         var int moveTick;
@@ -24,7 +24,7 @@ class GameField {
         let key = 0;
         let previousKey = 0;
 
-        let objects = Array.new(100);
+        let objects = Array.new(1000);
         let objectCount = 0;
 
         let aleksey = Aleksey.new();
@@ -66,6 +66,11 @@ class GameField {
             while (i < objectCount) {
                 let nandik = objects[i];
                 do nandik.tryMove(aleksey); 
+                let roadPosition = nandik.getRoadPosition();
+                if (roadPosition = 7){
+                    do nandik.dispose();
+                    let object[i] = 0; 
+                }
                 let i = i + 1;
             }
 

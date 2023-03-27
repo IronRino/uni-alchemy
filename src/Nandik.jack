@@ -19,6 +19,10 @@ class Nandik {
         return this;
     }
 
+    method int getRoadPosition(){
+        return roadPosition;
+    }
+
     method void tryMove(Aleksey aleksey) {
         let tick = tick - 1;
         if (tick = 0) {
@@ -34,16 +38,16 @@ class Nandik {
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
             do Output.moveCursor(0, 0);
+            do Output.printString("    ");
+            do Output.moveCursor(0, 0);
             let rotation = aleksey.getRotation();
             if (rotation = road) {
                 do Output.printString("OK");
                 do Clearing.clearNandik(location);
-                do dispose(); 
                 return;
             }
             do Output.printString("FAIL");
             do Clearing.clearNandik(location);
-            do dispose();
             return;
         }
 
