@@ -65,15 +65,15 @@ class GameField {
                 // progress game difficulty
                 if (time = 55) { let moveTick = 40; }
                 if (time = 50) { let moveTick = 30; }
-                if (time = 45) { let moveTick = 20; }
-                if (time = 40) { let moveTick = 25; }
-                if (time = 35) { let moveTick = 10; }
-                if (time = 30) { let moveTick = 8; }
-                if (time = 25) { let moveTick = 6; }
-                if (time = 20) { let moveTick = 5; }
-                if (time = 15) { let moveTick = 4; }
-                if (time = 10) { let moveTick = 3; }
-                if (time = 5) { let moveTick = 2; }
+                if (time = 45) { let moveTick = 25; }
+                if (time = 40) { let moveTick = 20; }
+                if (time = 35) { let moveTick = 15; }
+                if (time = 30) { let moveTick = 12; }
+                if (time = 25) { let moveTick = 10; }
+                if (time = 20) { let moveTick = 8; }
+                if (time = 15) { let moveTick = 6; }
+                if (time = 10) { let moveTick = 5; }
+                if (time = 5) { let moveTick = 4; }
             }
 
             // when time runs out - end game
