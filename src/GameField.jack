@@ -4,12 +4,9 @@ class GameField {
 
         var char key, previousKey;
 
-        var Array objects;
-        var int objectCount;
         var int i;
 
         var Aleksey aleksey;
-
         var Nandik nandik;
 
         var int road, roadPosition;
@@ -39,9 +36,9 @@ class GameField {
         while (~exit) {
             do Sys.wait(10);
 
-            if (spawnTick = 0) {
+            if ((spawnTick = 0) & (nandik = null)) {
                 let road = rng.random() + 1;
-                let objects[objectCount] = Nandik.new(road, moveTick);
+                let nandik = Nandik.new(road, moveTick);
                 let objectCount = objectCount + 1;
                 let spawnTick = maxSpawnTick;
             }
@@ -61,31 +58,15 @@ class GameField {
             if (key = 76) { do aleksey.setRotation(4); } // L
             if (key = 140) { let exit = true; } // Escape
             
-            let i = 0;
-            while (i < objectCount) {
-                let nandik = objects[i];
-                if (~(nandik = null)){
-                    do nandik.tryMove(aleksey); 
-                    let roadPosition = nandik.getRoadPosition();
-                    if (roadPosition = 7){
-                        do nandik.dispose();
-                        let objects[i] = null; 
-                    }
-                }
-                let i = i + 1;
+            do nandik.tryMove(aleksey); 
+            let roadPosition = nandik.getRoadPosition();
+            if (roadPosition = 7) { 
+                do nandik.dispose();
+                let nandik = null; 
             }
 
-            // clear when too many
-            if (objectCount > 4) {
-                let i = 0;
-                while (i < objectCount) {
-                    let nandik = objects[i];
-                    do nandik.dispose();
-                    let i = i + 1;
-                }
-                do objects.dispose();
-                let objects = Array.new(5);
-                let objectCount = 0;
+            if (moveTick > 10) {
+                let moveTick = moveTick - 1;
             }
 
             do aleksey.rotate();
