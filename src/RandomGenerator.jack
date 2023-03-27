@@ -3,8 +3,8 @@ class RandomGenerator
     field int random1, random2, maxValue, factor;
     
     constructor RandomGenerator new(int button) {
-        let random1 = 13731;
-        let random2 = 19450;
+        let random1 = 3731;
+        let random2 = 12345;
         let maxValue = 32767;
         let factor = button;
         return this;
@@ -24,5 +24,10 @@ class RandomGenerator
         let rand = next(random1 * factor + random2, maxValue);
         let factor = rand;
         return next(rand, 4);
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
     }
 }

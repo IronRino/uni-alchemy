@@ -34,7 +34,7 @@ class Nandik {
 
     method void move(int rotation) {
         let roadPosition = roadPosition + 1;
-        if (roadPosition = 7) {
+        if (~(roadPosition < 7)) {
             do Output.moveCursor(0, 0);
             do Output.printString("    ");
             do Output.moveCursor(0, 0);
