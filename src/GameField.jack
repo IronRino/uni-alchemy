@@ -28,7 +28,7 @@ class GameField {
         let key = 0;
         let previousKey = 0;
 
-        let objects = Array.new(64);
+        let objects = Array.new(25);
         let objectCount = 0;
 
         let aleksey = Aleksey.new();
@@ -75,7 +75,7 @@ class GameField {
                 let i = i + 1;
             }
 
-            if (objectCount > 63) {
+            if (objectCount > 20) {
                 let i = 0;
                 while (i < objectCount) {
                     let nandik = objects[i];
@@ -83,7 +83,7 @@ class GameField {
                     let i = i + 1;
                 }
                 do objects.dispose();
-                let objects = Array.new(64);
+                let objects = Array.new(25);
                 let objectCount = 0;
             }
 

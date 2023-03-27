@@ -42,6 +42,8 @@ class Nandik {
             
             // "kill" nandik
             let alive = false;
+            do Output.moveCursor(0, 0);
+            do Output.printString("DEATH");
             do Clearing.clearNandik(location);
 
             // register results
