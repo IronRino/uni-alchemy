@@ -47,6 +47,7 @@ class Obstacle {
                 return;
             }
             if (isNandik) { do score.increaseScore(10); }
+            else { do score.printScore() }
             do clearObstacle();
             return;
         }
