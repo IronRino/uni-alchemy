@@ -154,7 +154,7 @@ class GameField {
 
     function void printRules() {
         do Output.moveCursor(1, 0);
-        do Output.printString("Time: 99");
+        do Output.printString("Time: 60");
         do Output.moveCursor(3, 13);
         do Output.printString("Press [W] [S] [L] [P] to catch Nandik!");
         do Output.moveCursor(4, 20);
