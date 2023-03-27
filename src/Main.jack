@@ -7,6 +7,8 @@ class Main {
         do Output.moveCursor(0, 0);
         do Output.printString("                           ");
 
+        let seed = seed * seed;
+        let seed = seed - ((seed / 256) * 256);
         do GameField.initialize();
         do GameField.printRules();
         do GameField.run(seed);

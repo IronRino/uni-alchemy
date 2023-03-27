@@ -7,6 +7,10 @@ class Score{
         return this;
     }
 
+    method int getScore() {
+        return score;
+    }
+
     method void setScore(int value) {
         let score = value;
         do printScore();

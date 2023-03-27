@@ -9,7 +9,6 @@ class GameField {
         var Aleksey aleksey;
         var int alekseyRotation;
 
-        // var Random rng;
         var Random2 rng2;
         var int rngIndex;
         var int randomValue;
@@ -19,6 +18,9 @@ class GameField {
         var boolean obstacleShouldMove, obstacleCanSpawn, isNandik;
         var int moveTick;
 
+        var int time;
+        var int maxTick;
+        var int tick;
         var boolean exit;
 
 
@@ -28,29 +30,42 @@ class GameField {
         let score = Score.new();
 
         let aleksey = Aleksey.new();
-        
-        // let rng = Random.new();
+
         let rng2 = Random2.new();
         let rngIndex = seed;
         let randomValue = 0;
 
         let obstacleCanSpawn = true;
-        let moveTick = 50;
+        let moveTick = 51;
 
+        let time = 100;
+        let maxTick = 100;
+        let tick = maxTick;
         let exit = false;
         
 
         while (~exit) {
 
             do Sys.wait(10);
+            
+            // time ticking down
+            let tick = tick - 1;
+            if (tick = 0) {
+                let time = time - 1;
+                let tick = maxTick;
+            }
 
+            // when time runs out - end game
+            if (time = 0) { let exit = true; }
+
+            // print time
+            do Output.moveCursor(1, 5);
+            do Output.printString("   ");
+            do Output.moveCursor(1, 6);
+            do Output.printInt(time);
+
+            // spawning things
             if (obstacleCanSpawn) {
-                
-                // let randomValue = rng.getNext(randomValue, key + rng[randomValue]);
-                // if (randomValue < 13) { let isNandik = false; }
-                // else {let isNandik = true;}
-                // let road = rng[randomValue];
-                
                 let road = rng2.getRoad(rngIndex) - 48;
                 let randomValue = rng2.getObstacle(rngIndex);
                 if (randomValue = 48) { let isNandik = false; }
@@ -62,9 +77,10 @@ class GameField {
                 let rngIndex = rngIndex + 1;
                 if (rngIndex > 255) { let rngIndex = 0; }
 
-                if (moveTick > 10) { let moveTick = moveTick - 5; }
+                if (moveTick > 1) { let moveTick = moveTick - 5; }
             }
-
+           
+            // read key stuff
             let previousKey = key;
             let key = Keyboard.keyPressed();
             if (~(key = previousKey)) { do aleksey.clearHands(); }
@@ -78,6 +94,7 @@ class GameField {
             if (key = 76) { do aleksey.setRotation(4); } // L
             let alekseyRotation = aleksey.getRotation();
 
+            // obstacle management
             if (~(obstacle = null)) { 
                 let obstacleShouldMove = obstacle.tryMove(); 
                 if (obstacleShouldMove) { do obstacle.move(alekseyRotation, score); }
@@ -93,7 +110,18 @@ class GameField {
             do aleksey.rotate();
         }
 
-        do rng.dispose();
+        do Screen.clearScreen();
+        do Output.moveCursor(7, 28);
+        do Output.printString("Time's up!");
+        do Output.moveCursor(14, 23);
+        do Output.printString("Your score: ");
+
+        let randomValue = score.getScore();
+        do Output.printInt(randomValue);
+
+        do score.dispose();
+        do aleksey.dispose();
+        do rng2.dispose();
         return;
     }
 
@@ -109,13 +137,17 @@ class GameField {
     }
 
     function void printRules() {
+        do Output.moveCursor(1, 0);
+        do Output.printString("Time:");
+        do Output.moveCursor(22, 0);
+        do Output.printString("by vitvit & SanAndreas & kaba4ok");
         do Output.moveCursor(3, 13);
         do Output.printString("Press [W] [S] [L] [P] to catch Nandik!");
         do Output.moveCursor(4, 20);
         do Output.printString("Don't catch Impostors!!!");
-        do Output.moveCursor(12, 6);
+        do Output.moveCursor(12, 4);
         do Output.printString("[W]");
-        do Output.moveCursor(16, 6);
+        do Output.moveCursor(16, 4);
         do Output.printString("[S]");
         do Output.moveCursor(12, 57);
         do Output.printString("[P]");

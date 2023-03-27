@@ -10,10 +10,10 @@ class Random2 {
     }
 
     method char getRoad(int index) {
-        return roads.CharAt(index);
+        return roads.charAt(index);
     }
 
     method char getObstacle(int index) {
-        return obstacles.CharAt(index);
+        return obstacles.charAt(index);
     }
 }
