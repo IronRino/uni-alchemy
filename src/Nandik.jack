@@ -59,6 +59,7 @@ class Nandik {
     }
 
     method void dispose() {
+        do Clearing.clearNandik(location);
         do Memory.deAlloc(this);
         return;
     }

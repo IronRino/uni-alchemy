@@ -7,10 +7,7 @@ class GameField {
         var int i;
         var Array objects;
         var int objectCount;
-        var Array tempObjects;
-        var int tempObjectCount;
-
-        var Nandik nandik, object;
+        var Nandik nandik;
 
         var Aleksey aleksey;
 
@@ -26,14 +23,14 @@ class GameField {
         let key = 0;
         let previousKey = 0;
 
-        let objects = Array.new(10);
+        let objects = Array.new(64);
         let objectCount = 0;
 
         let aleksey = Aleksey.new();
         let rng = RandomGenerator.new(91); 
 
         let moveTick = 100;
-        let maxSpawnTick = 400;
+        let maxSpawnTick = 200;
         let spawnTick = maxSpawnTick;
 
         let exit = false;
@@ -66,29 +63,25 @@ class GameField {
             let i = 0;
             while (i < objectCount) {
                 let nandik = objects[i];
-                do nandik.tryMove(aleksey); 
-                let roadPosition = nandik.getRoadPosition();
-                if (roadPosition = 7) { do nandik.dispose(); }
+                if (~(nandik = null)) {
+                    do nandik.tryMove(aleksey); 
+                    let roadPosition = nandik.getRoadPosition();
+                    if (roadPosition = 7) { do nandik.dispose(); }
+                }
                 let i = i + 1;
             }
 
-            let tempObjects = Array.new(10);
-
-            let i = 0;
-            let tempObjectCount = objectCount;
-            while (i < tempObjectCount) {
-                let object = objects[i];
-                if (~(object = null))
-                {
-                    let tempObjects[tempObjectCount] = object;
-                    let tempObjectCount = tempObjectCount + 1;
+            if (objectCount > 63) {
+                let i = 0;
+                while (i < objectCount) {
+                    let nandik = objects[i];
+                    do nandik.dispose();
+                    let i = i + 1;
                 }
+                do objects.dispose();
+                let objects = Array.new(64);
+                objectCount = 0;
             }
-            let objectCount = tempObjectCount;
-            do objects.dispose();
-            let objects = tempObjects;
-            do tempObjects.dispose();
-            let tempObjectCount = 0;
 
             do aleksey.rotate();
 
