@@ -19,11 +19,11 @@ class RandomGenerator
         return remainder;
     }
 
-    method int random() {
+    method int random(int max) {
         var int rand;
         let rand = next(random1 * factor + random2, maxValue);
         let factor = rand;
-        return next(rand, 4);
+        return next(rand, max);
     }
 
     method void dispose() {

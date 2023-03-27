@@ -7,12 +7,16 @@ class GameField {
         var Aleksey aleksey;
         var int alekseyRotation;
 
-        var Nandik nandik;
-        var boolean nandikShouldMove;
-        var boolean nandikCanSpawn;
+        var Obstacle obstacle;
+        var boolean obstacleShouldMove;
+        var boolean obstacleCanSpawn;
 
         var int road, roadPosition;
         var RandomGenerator rng;
+        var int randomObstacle;
+        var int seed;
+
+        var boolean isNandik;
 
         var int moveTick;
 
@@ -24,20 +28,25 @@ class GameField {
 
         let aleksey = Aleksey.new();
         let rng = RandomGenerator.new(91); 
+        let seed = 0;
 
-        let nandikCanSpawn = true;
+        let obstacleCanSpawn = true;
         let moveTick = 50;
 
         let exit = false;
 
-
         while (~exit) {
             do Sys.wait(10);
+            let seed = seed + 1;
+            do Random.SetSeed(seed);
+            if (obstacleCanSpawn) {
+                let randomObstacle = Random.Range(100);
+                if (randomObstacle > 75) { let isNandik = false; }
+                if (~(randomObstacle > 75)) { let isNandik = true; }
 
-            if (nandikCanSpawn) {
-                let road = rng.random() + 1;
-                let nandik = Nandik.new(road, moveTick);
-                let nandikCanSpawn = false;
+                let road = Random.Range(4) + 1;
+                let obstacle = Obstacle.new(road, moveTick, isNandik);
+                let obstacleCanSpawn = false;
                 if (moveTick > 10){ let moveTick = moveTick - 5; }
             }
 
@@ -55,15 +64,15 @@ class GameField {
             
             let alekseyRotation = aleksey.getRotation();
 
-            if (~(nandik = null)) { 
-                let nandikShouldMove = nandik.tryMove(); 
-                if (nandikShouldMove) { do nandik.move(alekseyRotation); }
+            if (~(obstacle = null)) { 
+                let obstacleShouldMove = obstacle.tryMove(); 
+                if (obstacleShouldMove) { do obstacle.move(alekseyRotation); }
                 
-                let roadPosition = nandik.getRoadPosition();
+                let roadPosition = obstacle.getRoadPosition();
                 if (roadPosition = 7) { 
-                    do nandik.dispose(); 
-                    let nandik = null;
-                    let nandikCanSpawn = true;
+                    do obstacle.dispose(); 
+                    let obstacle = null;
+                    let obstacleCanSpawn = true;
                 }
             }
             do aleksey.rotate();

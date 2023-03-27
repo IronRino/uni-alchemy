@@ -1,8 +1,9 @@
-class Nandik {
+class Obstacle {
 
     field int location, road, tick, maxTick, roadPosition;
+    field boolean isNandik;
 
-    constructor Nandik new(int road1, int maxTick1) {
+    constructor Obstacle new(int road1, int maxTick1, boolean isNandik1) {
 
         let road = road1;
         if (road = 1) { let location = 4357; }
@@ -10,7 +11,9 @@ class Nandik {
         if (road = 3) { let location = 5638; }
         if (road = 4) { let location = 5657; }
 
-        do Drawing.drawNandik(location);
+        let isNandik = isNandik1;
+        if (isNandik) { do Drawing.drawNandik(location); }
+        else { do Drawing.drawAmogus(location); }
 
         let tick = maxTick1;
         let maxTick = maxTick1;
@@ -40,18 +43,22 @@ class Nandik {
             do Output.moveCursor(0, 0);
             if (rotation = road) {
                 do Output.printString("OK");
-                do Clearing.clearNandik(location);
+                if (isNandik) { do Clearing.clearNandik(location); }
+                else { do Clearing.clearAmogus(location); }
                 return;
             }
             do Output.printString("FAIL");
-            do Clearing.clearNandik(location);
+            if (isNandik) { do Clearing.clearNandik(location); }
+            else { do Clearing.clearAmogus(location); }
             return;
         }
 
-        do Clearing.clearNandik(location);
+        if (isNandik) { do Clearing.clearNandik(location); }
+        else { do Clearing.clearAmogus(location); }
         if ((road = 1) | (road = 3)) { let location = location + 1; }
         if ((road = 2) | (road = 4)) { let location = location - 1; }
-        do Drawing.drawNandik(location);
+        if (isNandik) { do Drawing.drawNandik(location); }
+        else { do Drawing.drawAmogus(location); }
         return;
     }
 
