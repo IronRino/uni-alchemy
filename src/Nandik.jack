@@ -1,6 +1,7 @@
 class Nandik {
 
     field int location, road, tick, maxTick, roadPosition;
+    field boolean alive;
 
     constructor Nandik new(int road1, int maxTick1) {
 
@@ -15,6 +16,7 @@ class Nandik {
         let tick = maxTick1;
         let maxTick = maxTick1;
         let roadPosition = 0;
+        let alive = true;
 
         return this;
     }
@@ -37,17 +39,21 @@ class Nandik {
 
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
+            
+            // "kill" nandik
+            let alive = false;
+            do Clearing.clearNandik(location);
+
+            // register results
             do Output.moveCursor(0, 0);
             do Output.printString("    ");
             do Output.moveCursor(0, 0);
             let rotation = aleksey.getRotation();
             if (rotation = road) {
                 do Output.printString("OK");
-                do Clearing.clearNandik(location);
                 return;
             }
             do Output.printString("FAIL");
-            do Clearing.clearNandik(location);
             return;
         }
 
@@ -58,8 +64,11 @@ class Nandik {
         return;
     }
 
+    method boolean isAlive() {
+        return alive;
+    }
+
     method void dispose() {
-        do Clearing.clearNandik(location);
         do Memory.deAlloc(this);
         return;
     }

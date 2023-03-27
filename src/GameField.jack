@@ -2,12 +2,15 @@ class GameField {
 
     function void run() {
 
+        //----------------  VAR SETUP  -----------------//
+
         var char key, previousKey;
 
         var int i;
         var Array objects;
         var int objectCount;
         var Nandik nandik;
+        var boolean nandikAlive;
 
         var Aleksey aleksey;
 
@@ -19,6 +22,8 @@ class GameField {
         var int spawnTick;
 
         var boolean exit;
+
+        //---------------  GAME SETUP  -----------------//
 
         let key = 0;
         let previousKey = 0;
@@ -34,6 +39,8 @@ class GameField {
         let spawnTick = maxSpawnTick;
 
         let exit = false;
+
+        //---------------  GAME LOOP  ------------------//
 
         while (~exit) {
             do Sys.wait(10);
@@ -63,11 +70,8 @@ class GameField {
             let i = 0;
             while (i < objectCount) {
                 let nandik = objects[i];
-                if (~(nandik = null)) {
-                    do nandik.tryMove(aleksey); 
-                    let roadPosition = nandik.getRoadPosition();
-                    if (roadPosition = 7) { do nandik.dispose(); }
-                }
+                let nandikAlive = nandik.isAlive();
+                if (nandikAlive) { do nandik.tryMove(aleksey); }
                 let i = i + 1;
             }
 
@@ -80,7 +84,7 @@ class GameField {
                 }
                 do objects.dispose();
                 let objects = Array.new(64);
-                objectCount = 0;
+                let objectCount = 0;
             }
 
             do aleksey.rotate();
