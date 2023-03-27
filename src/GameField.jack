@@ -15,8 +15,6 @@ class GameField {
         var RandomGenerator rng;
 
         var int moveTick;
-        var int maxSpawnTick;
-        var int spawnTick;
 
         var boolean exit;
 
@@ -29,8 +27,6 @@ class GameField {
 
         let nandikCanSpawn = true;
         let moveTick = 50;
-        let maxSpawnTick = 200;
-        let spawnTick = 100;
 
         let exit = false;
 
@@ -38,12 +34,10 @@ class GameField {
         while (~exit) {
             do Sys.wait(10);
 
-            let spawnTick = spawnTick - 1;
             if (nandikCanSpawn) {
                 let road = rng.random() + 1;
                 let nandik = Nandik.new(road, moveTick);
                 let nandikCanSpawn = false;
-                let spawnTick = maxSpawnTick;
                 if (moveTick > 10){ let moveTick = moveTick - 5; }
             }
 
