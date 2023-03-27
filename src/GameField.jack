@@ -72,8 +72,8 @@ class GameField {
                 if (time = 25) { let moveTick = 10; }
                 if (time = 20) { let moveTick = 8; }
                 if (time = 15) { let moveTick = 6; }
-                if (time = 10) { let moveTick = 5; }
-                if (time = 5) { let moveTick = 4; }
+                if (time = 10) { let moveTick = 4; }
+                if (time = 5) { let moveTick = 3; }
             }
 
             // when time runs out - end game
