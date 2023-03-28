@@ -1,29 +1,35 @@
 class GameField {
 
     function void run(int seed) {
-
+        
+        // reading keys
         var char key, previousKey;
 
+        // score printer
         var Score score;
 
+        // main character
         var Aleksey aleksey;
         var int alekseyRotation;
 
+        // rng-related thingies
         var Random2 rng2;
         var int rngIndex;
         var int randomValue;
         var int road, roadPosition;
 
+        // nandiks and impostors
         var Obstacle obstacle;
         var boolean obstacleShouldMove, obstacleCanSpawn, isNandik;
         var int moveTick;
 
+        // time-related thingies
         var int time;
         var int maxTick;
         var int tick;
         var boolean exit;
 
-
+        // insert text
         let key = 3;
         let previousKey = 3;
 
@@ -43,7 +49,7 @@ class GameField {
         let tick = maxTick;
         let exit = false;
         
-
+        // main gameloop
         while (~exit) {
 
             do Sys.wait(10);
@@ -123,6 +129,7 @@ class GameField {
             do aleksey.rotate();
         }
 
+        // afterparty (on game end)
         do Screen.clearScreen();
 
         do Output.moveCursor(22, 0);
