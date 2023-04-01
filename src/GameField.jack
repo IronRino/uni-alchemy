@@ -1,78 +1,129 @@
 class GameField {
 
-    function void run() {
-
-        //----------------  VAR SETUP  -----------------//
-
+    function void run(int seed) {
+        
+        // reading keys
         var char key, previousKey;
 
-        var int i;
-        var Array objects;
-        var int objectCount;
-        var Nandik nandik;
-        var boolean nandikAlive;
+        // score printer
+        var Score score;
 
+        // main character
         var Aleksey aleksey;
+        var int alekseyRotation;
 
+        // rng-related thingies
+        var Random2 rng2;
+        var int rngIndex;
+        var int randomValue;
         var int road, roadPosition;
-        var RandomGenerator rng;
 
+        // nandiks and impostors
+        var Obstacle obstacle;
+        var boolean obstacleShouldMove, obstacleCanSpawn, isNandik;
         var int moveTick;
-        var int maxSpawnTick;
-        var int spawnTick;
 
+        // time-related thingies
+        var int time;
+        var int maxTick;
+        var int tick;
         var boolean exit;
 
-        //---------------  GAME SETUP  -----------------//
+        // insert text
+        let key = 3;
+        let previousKey = 3;
 
-        let key = 0;
-        let previousKey = 0;
-
-        let objects = Array.new(25);
-        let objectCount = 0;
+        let score = Score.new();
 
         let aleksey = Aleksey.new();
-        let rng = RandomGenerator.new(91); 
 
-        let moveTick = 100;
-        let maxSpawnTick = 200;
-        let spawnTick = maxSpawnTick;
+        let rng2 = Random2.new();
+        let rngIndex = seed;
+        let randomValue = 0;
 
+        let obstacleCanSpawn = true;
+        let moveTick = 51;
+
+        let time = 60;
+        let maxTick = 70;
+        let tick = maxTick;
         let exit = false;
-
-        //---------------  GAME LOOP  ------------------//
-
+        
+        // main gameloop
         while (~exit) {
-            do Sys.wait(10);
 
-            if (spawnTick = 0) {
-                let road = rng.random() + 1;
-                let objects[objectCount] = Nandik.new(road, moveTick);
-                let objectCount = objectCount + 1;
-                let spawnTick = maxSpawnTick;
+            do Sys.wait(10);
+            
+            // time ticking down
+            let tick = tick - 1;
+            if (tick = 0) {
+                let time = time - 1;
+                let tick = maxTick;
+
+                // update time
+                if (time = 9) {
+                    do Output.moveCursor(1, 6);
+                    do Output.printString("   ");
+                }
+                do Output.moveCursor(1, 6);
+                do Output.printInt(time);
+
+                // progress game difficulty
+                if (time = 55) { let moveTick = 40; }
+                if (time = 50) { let moveTick = 30; }
+                if (time = 45) { let moveTick = 25; }
+                if (time = 40) { let moveTick = 20; }
+                if (time = 35) { let moveTick = 15; }
+                if (time = 30) { let moveTick = 12; }
+                if (time = 25) { let moveTick = 10; }
+                if (time = 20) { let moveTick = 8; }
+                if (time = 15) { let moveTick = 6; }
+                if (time = 10) { let moveTick = 4; }
+                if (time = 5) { let moveTick = 3; }
             }
 
-            let spawnTick = spawnTick - 1;
+            // when time runs out - end game
+            if (time = 0) { let exit = true; }
 
+            // spawning things
+            if (obstacleCanSpawn) {
+                let road = rng2.getRoad(rngIndex) - 48;
+                let randomValue = rng2.getObstacle(rngIndex);
+                if (randomValue = 48) { let isNandik = false; }
+                else { let isNandik = true; }
+
+                let obstacle = Obstacle.new(road, moveTick, isNandik);
+                let obstacleCanSpawn = false;
+
+                let rngIndex = rngIndex + 1;
+                if (rngIndex > 255) { let rngIndex = 0; }
+            }
+           
+            // read key stuff
             let previousKey = key;
             let key = Keyboard.keyPressed();
-            let rng = RandomGenerator.new(key);
-
             if (~(key = previousKey)) { do aleksey.clearHands(); }
+
+            if (key = 140) { let exit = true; } // Escape
 
             if (~((key = 140) | (key = 87) | (key = 76) | (key = 83) | (key = 80))) { do aleksey.setRotation(0); }
             if (key = 87) { do aleksey.setRotation(1); } // W
             if (key = 80) { do aleksey.setRotation(2); } // P
             if (key = 83) { do aleksey.setRotation(3); } // S
             if (key = 76) { do aleksey.setRotation(4); } // L
-            if (key = 140) { let exit = true; } // Escape
-            
-            let i = 0;
-            while (i < objectCount) {
-                let nandik = objects[i];
-                let nandikAlive = nandik.isAlive();
-                if (nandikAlive) { do nandik.tryMove(aleksey); }
-                let i = i + 1;
+            let alekseyRotation = aleksey.getRotation();
+
+            // obstacle management
+            if (~(obstacle = null)) { 
+                let obstacleShouldMove = obstacle.tryMove(); 
+                if (obstacleShouldMove) { do obstacle.move(alekseyRotation, score); }
+                
+                let roadPosition = obstacle.getRoadPosition();
+                if (roadPosition = 7) { 
+                    do obstacle.dispose(); 
+                    let obstacle = null;
+                    let obstacleCanSpawn = true;
+                }
             }
 
             if (objectCount > 20) {
@@ -93,6 +144,23 @@ class GameField {
                 let maxSpawnTick = maxSpawnTick - 1;
             }
         }
+
+        // afterparty (on game end)
+        do Screen.clearScreen();
+
+        do Output.moveCursor(22, 0);
+        do Output.printString("by vitvit & SanAndreas & kaba4ok");
+        do Output.moveCursor(7, 26);
+        do Output.printString("Time's up!");
+        do Output.moveCursor(14, 23);
+        do Output.printString("Your score: ");
+
+        let randomValue = score.getScore();
+        do Output.printInt(randomValue);
+
+        do score.dispose();
+        do aleksey.dispose();
+        do rng2.dispose();
         return;
     }
 
@@ -104,6 +172,24 @@ class GameField {
         do Drawing.drawBoxPlatform(7178);
         do Drawing.drawAlekseyTorso(4879);
         do Drawing.drawAlekseyHeadRight(3823);
+        return;
+    }
+
+    function void printRules() {
+        do Output.moveCursor(1, 0);
+        do Output.printString("Time: 60");
+        do Output.moveCursor(3, 13);
+        do Output.printString("Press [W] [S] [L] [P] to catch Nandik!");
+        do Output.moveCursor(4, 20);
+        do Output.printString("Don't catch Impostors!!!");
+        do Output.moveCursor(12, 4);
+        do Output.printString("[W]");
+        do Output.moveCursor(16, 4);
+        do Output.printString("[S]");
+        do Output.moveCursor(12, 57);
+        do Output.printString("[P]");
+        do Output.moveCursor(16, 57);
+        do Output.printString("[L]");
         return;
     }
 }

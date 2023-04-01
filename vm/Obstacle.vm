@@ -1,5 +1,5 @@
-function Nandik.new 0
-push constant 5
+function Obstacle.new 0
+push constant 6
 call Memory.alloc 1
 pop pointer 0
 push argument 0
@@ -40,8 +40,10 @@ label IF_TRUE3
 push constant 5657
 pop this 0
 label IF_FALSE3
-push this 0
-call Drawing.drawNandik 1
+push argument 2
+pop this 5
+push pointer 0
+call Obstacle.printObstacle 1
 pop temp 0
 push argument 1
 pop this 2
@@ -51,12 +53,12 @@ push constant 0
 pop this 4
 push pointer 0
 return
-function Nandik.getRoadPosition 0
+function Obstacle.getRoadPosition 0
 push argument 0
 pop pointer 0
 push this 4
 return
-function Nandik.tryMove 0
+function Obstacle.tryMove 0
 push argument 0
 pop pointer 0
 push this 2
@@ -71,14 +73,13 @@ goto IF_FALSE0
 label IF_TRUE0
 push this 3
 pop this 2
-push pointer 0
-push argument 1
-call Nandik.move 2
-pop temp 0
+push constant 0
+not
+return
 label IF_FALSE0
 push constant 0
 return
-function Nandik.move 1
+function Obstacle.move 0
 push argument 0
 pop pointer 0
 push this 4
@@ -112,48 +113,54 @@ push constant 0
 call Output.moveCursor 2
 pop temp 0
 push argument 1
-call Aleksey.getRotation 1
-pop local 0
-push local 0
 push this 1
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push constant 2
-call String.new 1
-push constant 79
-call String.appendChar 2
-push constant 75
-call String.appendChar 2
-call Output.printString 1
+push this 5
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push argument 2
+push constant 10
+call Score.reduceScore 2
 pop temp 0
-push this 0
-call Clearing.clearNandik 1
+goto IF_END2
+label IF_FALSE2
+push argument 2
+push constant 20
+call Score.increaseScore 2
+pop temp 0
+label IF_END2
+push pointer 0
+call Obstacle.clearObstacle 1
 pop temp 0
 push constant 0
 return
 label IF_FALSE1
-push constant 4
-call String.new 1
-push constant 70
-call String.appendChar 2
-push constant 65
-call String.appendChar 2
-push constant 73
-call String.appendChar 2
-push constant 76
-call String.appendChar 2
-call Output.printString 1
+push this 5
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push argument 2
+push constant 10
+call Score.increaseScore 2
 pop temp 0
-push this 0
-call Clearing.clearNandik 1
+goto IF_END3
+label IF_FALSE3
+push argument 2
+call Score.printScore 1
+pop temp 0
+label IF_END3
+push pointer 0
+call Obstacle.clearObstacle 1
 pop temp 0
 push constant 0
 return
 label IF_FALSE0
-push this 0
-call Clearing.clearNandik 1
+push pointer 0
+call Obstacle.clearObstacle 1
 pop temp 0
 push this 1
 push constant 1
@@ -162,14 +169,14 @@ push this 1
 push constant 3
 eq
 or
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push this 0
 push constant 1
 add
 pop this 0
-label IF_FALSE2
+label IF_FALSE4
 push this 1
 push constant 2
 eq
@@ -177,20 +184,56 @@ push this 1
 push constant 4
 eq
 or
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
 push this 0
 push constant 1
 sub
 pop this 0
-label IF_FALSE3
-push this 0
-call Drawing.drawNandik 1
+label IF_FALSE5
+push pointer 0
+call Obstacle.printObstacle 1
 pop temp 0
 push constant 0
 return
-function Nandik.dispose 0
+function Obstacle.printObstacle 0
+push argument 0
+pop pointer 0
+push this 5
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+call Drawing.drawNandik 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 0
+call Drawing.drawAmogus 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Obstacle.clearObstacle 0
+push argument 0
+pop pointer 0
+push this 5
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+call Clearing.clearNandik 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 0
+call Clearing.clearAmogus 1
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Obstacle.dispose 0
 push argument 0
 pop pointer 0
 push pointer 0
