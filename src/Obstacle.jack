@@ -17,6 +17,7 @@ class Obstacle {
         let tick = maxTick1;
         let maxTick = maxTick1;
         let roadPosition = 0;
+        let alive = true;
 
         return this;
     }
@@ -37,6 +38,14 @@ class Obstacle {
     method void move(int rotation, Score score) {
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
+            
+            // "kill" nandik
+            let alive = false;
+            do Output.moveCursor(0, 0);
+            do Output.printString("DEATH");
+            do Clearing.clearNandik(location);
+
+            // register results
             do Output.moveCursor(0, 0);
             do Output.printString("    ");
             do Output.moveCursor(0, 0);
@@ -68,6 +77,10 @@ class Obstacle {
         if (isNandik) { do Clearing.clearNandik(location); }
         else { do Clearing.clearAmogus(location); }
         return;
+    }
+
+    method boolean isAlive() {
+        return alive;
     }
 
     method void dispose() {

@@ -116,7 +116,23 @@ class GameField {
                 }
             }
 
+            if (objectCount > 20) {
+                let i = 0;
+                while (i < objectCount) {
+                    let nandik = objects[i];
+                    do nandik.dispose();
+                    let i = i + 1;
+                }
+                do objects.dispose();
+                let objects = Array.new(25);
+                let objectCount = 0;
+            }
+
             do aleksey.rotate();
+
+            if (maxSpawnTick > 10){
+                let maxSpawnTick = maxSpawnTick - 1;
+            }
         }
 
         // afterparty (on game end)

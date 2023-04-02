@@ -274,6 +274,64 @@ label IF_TRUE15
 push local 10
 call Obstacle.dispose 1
 pop temp 0
+label IF_FALSE8
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP1
+label WHILE_END1
+push constant 10
+call Array.new 1
+pop local 5
+push constant 0
+pop local 2
+push local 4
+pop local 6
+label WHILE_EXP2
+push local 2
+push local 6
+lt
+not
+if-goto WHILE_END2
+push local 2
+push local 3
+add
+pop pointer 1
+push that 0
+pop local 8
+push local 8
+push constant 0
+eq
+not
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push local 6
+push local 5
+add
+push local 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 6
+push constant 1
+add
+pop local 6
+label IF_FALSE9
+goto WHILE_EXP2
+label WHILE_END2
+push local 6
+pop local 4
+push local 3
+call Array.dispose 1
+pop temp 0
+push local 5
+pop local 3
+push local 5
+call Array.dispose 1
+pop temp 0
 push constant 0
 pop local 10
 push constant 0
@@ -284,6 +342,17 @@ label IF_FALSE13
 push local 3
 call Aleksey.rotate 1
 pop temp 0
+push local 14
+push constant 10
+gt
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push local 14
+push constant 1
+sub
+pop local 14
+label IF_FALSE10
 goto WHILE_EXP0
 label WHILE_END0
 push local 2
