@@ -38,7 +38,7 @@ class Obstacle {
         let roadPosition = roadPosition + 1;
         if (roadPosition = 7) {
             do Output.moveCursor(0, 0);
-            do Output.printString(    );
+            do Output.printString("    ");
             do Output.moveCursor(0, 0);
             if (rotation = road) {
                 if (isNandik) { do score.reduceScore(10); }
