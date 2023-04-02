@@ -69,17 +69,7 @@ class GameField {
                 do Output.printInt(time);
 
                 // progress game difficulty
-                if (time = 55) { let moveTick = 40; }
-                if (time = 50) { let moveTick = 30; }
-                if (time = 45) { let moveTick = 25; }
-                if (time = 40) { let moveTick = 20; }
-                if (time = 35) { let moveTick = 15; }
-                if (time = 30) { let moveTick = 12; }
-                if (time = 25) { let moveTick = 10; }
-                if (time = 20) { let moveTick = 8; }
-                if (time = 15) { let moveTick = 6; }
-                if (time = 10) { let moveTick = 4; }
-                if (time = 5) { let moveTick = 3; }
+                let moveTick = GameField.getDifficult(time, moveTick);
             }
 
             // when time runs out - end game
@@ -130,6 +120,31 @@ class GameField {
         }
 
         // afterparty (on game end)
+        do GameField.printScore(score);
+        do score.dispose();
+        do aleksey.dispose();
+        do rng2.dispose();
+        return;
+    }
+    
+    function int getDifficult(int time, int moveTick){
+        if (time = 55) { return 40; }
+        if (time = 50) { return 30; }
+        if (time = 45) { return 25; }
+        if (time = 40) { return 20; }
+        if (time = 35) { return 15; }
+        if (time = 30) { return 12; }
+        if (time = 25) { return 10; }
+        if (time = 20) { return 8; }
+        if (time = 15) { return 6; }
+        if (time = 10) { return 4; }
+        if (time = 5) { return 3; }
+        return moveTick;
+    }
+
+    function void printScore(Score score){
+        var int finalScore;
+        let finalScore = score.getScore();
         do Screen.clearScreen();
 
         do Output.moveCursor(22, 0);
@@ -138,13 +153,7 @@ class GameField {
         do Output.printString("Time's up!");
         do Output.moveCursor(14, 23);
         do Output.printString("Your score: ");
-
-        let randomValue = score.getScore();
-        do Output.printInt(randomValue);
-
-        do score.dispose();
-        do aleksey.dispose();
-        do rng2.dispose();
+        do Output.printInt(finalScore);
         return;
     }
 
