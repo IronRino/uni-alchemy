@@ -1,6 +1,8 @@
 class Obstacle {
 
     field int location, road, tick, maxTick, roadPosition;
+
+    // isNandik? True = Obstacle is Nandik; False = Obstacle is Amogus.
     field boolean isNandik;
 
     constructor Obstacle new(int road1, int maxTick1, boolean isNandik1) {
